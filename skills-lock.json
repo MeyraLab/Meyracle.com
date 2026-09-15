@@ -56,6 +56,13 @@
       "skillPath": "skills/apple-ui-designer/SKILL.md",
       "computedHash": "26d43c0a38e7a0ad8cf2cd5418d48ca7525873cc60f203ac67fcf024ce577eb3"
     },
+    "better-ui": {
+      "source": "jakubkrehel/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/better-ui/SKILL.md",
+      "computedHash": "d05cf568f197e47b15e71e21b19be1897eba2bf187ef7b0a341bc5ffaf3ffd4d"
+    },
     "brainstorming": {
       "source": "obra/superpowers",
       "sourceType": "github",
