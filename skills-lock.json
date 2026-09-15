@@ -15,6 +15,13 @@
       "skillPath": "skills/copy-editing/SKILL.md",
       "computedHash": "ba4e44a8470b3ae2add3e0ffa74c85d8b0357db4ca2cf8cfa7b4abc9d94fc602"
     },
+    "directory-submissions": {
+      "source": "coreyhaines31/marketingskills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/directory-submissions/SKILL.md",
+      "computedHash": "b737c3b9b9387bbeefd4fb5a003c1debaf273563f170665f6b9341c6818d121b"
+    },
     "firecrawl": {
       "source": "firecrawl/cli",
       "sourceType": "github",
