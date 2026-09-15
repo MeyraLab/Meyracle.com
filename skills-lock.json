@@ -75,6 +75,13 @@
       "skillPath": "skills/founder-sales/SKILL.md",
       "computedHash": "4e2ba491b26e733aa9945b7daf0e3dfb13eda8328ac7bfb7adfebd8f575ffb7c"
     },
+    "handoff": {
+      "source": "mattpocock/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/handoff/SKILL.md",
+      "computedHash": "20e5f4afdef502637510bc5c64d27645d3c85c88df9cb006824bbb0980166319"
+    },
     "launch": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
