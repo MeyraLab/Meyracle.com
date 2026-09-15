@@ -261,6 +261,12 @@
       "skillPath": "skills/turnstile-spin/SKILL.md",
       "computedHash": "62a5165f9a3a8c92561351529c3c4fd0d0777ad2f2c873494aed6113e024dba1"
     },
+    "wayfinder": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/wayfinder/SKILL.md",
+      "computedHash": "fa790eb4255b13d24d7e33ff4891ccd3d621558cc0ab87ae226777538ea16a8f"
+    },
     "web-perf": {
       "source": "cloudflare/skills",
       "sourceType": "github",
