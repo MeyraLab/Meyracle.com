@@ -21,6 +21,12 @@
       "skillPath": "skills/copy-editing/SKILL.md",
       "computedHash": "ba4e44a8470b3ae2add3e0ffa74c85d8b0357db4ca2cf8cfa7b4abc9d94fc602"
     },
+    "copywriting": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/copywriting/SKILL.md",
+      "computedHash": "779f05c8be67da475e6a7af78de3e0400b0038e371ce898dd6ff9d3331aab7db"
+    },
     "directory-submissions": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
