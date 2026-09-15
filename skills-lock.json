@@ -1,6 +1,13 @@
 {
   "version": 1,
   "skills": {
+    "ai-evals": {
+      "source": "RefoundAI/lenny-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/ai-evals/SKILL.md",
+      "computedHash": "76c0354bc6205f0854e3e8e989d671d5c92ee204e4ad92463b78b22c7d928fda"
+    },
     "ai-product-strategy": {
       "source": "RefoundAI/lenny-skills",
       "ref": "main",
