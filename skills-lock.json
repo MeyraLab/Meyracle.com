@@ -35,6 +35,13 @@
       "skillPath": "skills/android/SKILL.md",
       "computedHash": "4dd3502bf04dc3b81a58ca1af9a1a7fb08a0e35359db2a59530f9105331758b2"
     },
+    "apple-hig-designer": {
+      "source": "jamesrochabrun/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/apple-hig-designer/SKILL.md",
+      "computedHash": "d6f35edf97a7545d967e4d5bbb5666712d732c9e40328835d8f3f585ae416f0a"
+    },
     "brainstorming": {
       "source": "obra/superpowers",
       "sourceType": "github",
