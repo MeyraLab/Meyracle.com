@@ -137,6 +137,13 @@
       "skillPath": "skills/productivity/handoff/SKILL.md",
       "computedHash": "20e5f4afdef502637510bc5c64d27645d3c85c88df9cb006824bbb0980166319"
     },
+    "just-scrape": {
+      "source": "scrapegraphai/just-scrape",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/just-scrape/SKILL.md",
+      "computedHash": "a9a4d7e5d1f44c351f0a7eecd486c8b9107aa866348fd0e6fb92453c0f387245"
+    },
     "launch": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
