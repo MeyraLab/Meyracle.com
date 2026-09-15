@@ -123,6 +123,13 @@
       "skillPath": "skills/founder-sales/SKILL.md",
       "computedHash": "4e2ba491b26e733aa9945b7daf0e3dfb13eda8328ac7bfb7adfebd8f575ffb7c"
     },
+    "grill-with-docs": {
+      "source": "mattpocock/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
+      "computedHash": "35e62aa423aaeab6a414bcac273f56dfb17802ef2334b41b6a3b00f28196c8cf"
+    },
     "handoff": {
       "source": "mattpocock/skills",
       "ref": "main",
