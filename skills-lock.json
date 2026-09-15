@@ -122,6 +122,13 @@
       "skillPath": "skills/product-marketing/SKILL.md",
       "computedHash": "b8a9cd747705923a7a29cda12e478594e3a5062d8f7c7bfbf19d7fc0b24cee76"
     },
+    "prototype": {
+      "source": "mattpocock/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/prototype/SKILL.md",
+      "computedHash": "d3fc74689bd993e39c44bfae510d014eecffbeec2922764b065377fd1327c0f6"
+    },
     "schema": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
