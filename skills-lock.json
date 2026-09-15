@@ -278,6 +278,13 @@
       "skillPath": "skills/engineering/prototype/SKILL.md",
       "computedHash": "d3fc74689bd993e39c44bfae510d014eecffbeec2922764b065377fd1327c0f6"
     },
+    "redesign-existing-projects": {
+      "source": "leonxlnx/taste-skill",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/redesign-skill/SKILL.md",
+      "computedHash": "b405eee0e0e80fc243f731d9aa368bca307e356db7e6157d27101d369dac6726"
+    },
     "research": {
       "source": "mattpocock/skills",
       "ref": "main",
