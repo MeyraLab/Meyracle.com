@@ -14,6 +14,13 @@
       "skillPath": "skills/firecrawl/SKILL.md",
       "computedHash": "d4aeeccee5e30d0b41db63cbae1bf99627ada6ed2939701453c80dd8a15d6e75"
     },
+    "launch": {
+      "source": "coreyhaines31/marketingskills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/launch/SKILL.md",
+      "computedHash": "9e7a103ab5f5ca7f8018b6a183b015a1cc38f7b701a18e6a9be4e70398cad1c6"
+    },
     "seo-audit": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
