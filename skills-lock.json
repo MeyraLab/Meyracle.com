@@ -165,6 +165,12 @@
       "skillPath": "skills/marketing-psychology/SKILL.md",
       "computedHash": "50d735eb0f5c36f379ed2200f21aeacc9b9ad85667b5d33ec6111857352a1340"
     },
+    "measuring-pmf": {
+      "source": "RefoundAI/lenny-skills",
+      "sourceType": "github",
+      "skillPath": "skills/measuring-pmf/SKILL.md",
+      "computedHash": "0c1bee2927085e6350adfb06c4dc3f789fd9a9c927415fe5ec462fc0b479772d"
+    },
     "nextjs-on-cloudflare": {
       "source": "cloudflare/skills",
       "sourceType": "github",
