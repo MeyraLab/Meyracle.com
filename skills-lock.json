@@ -1,6 +1,13 @@
 {
   "version": 1,
   "skills": {
+    "ai-product-strategy": {
+      "source": "RefoundAI/lenny-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/ai-product-strategy/SKILL.md",
+      "computedHash": "5db9cc68c720ecb1464be336681cec50708f73337cf68b30ac9e6a18f73624bb"
+    },
     "ai-seo": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
