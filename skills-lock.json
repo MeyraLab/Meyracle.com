@@ -158,6 +158,13 @@
       "skillPath": "skills/onboarding/SKILL.md",
       "computedHash": "e1afc992d94288dad5ead64cea7276dea14a58e539889bf0cc26f7503685fd11"
     },
+    "pricing-strategy": {
+      "source": "RefoundAI/lenny-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/pricing-strategy/SKILL.md",
+      "computedHash": "6ad8ce3083aba089651bca2d40ca26ecc16bdd69b9a8a9bab9199b08d59ed5ea"
+    },
     "product-manager-toolkit": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "github",
