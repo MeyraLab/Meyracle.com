@@ -138,6 +138,13 @@
       "skillPath": "skills/durable-objects/SKILL.md",
       "computedHash": "39266b1d6b680c584cc7f75459a2b7eb428a06f6b5f4e95d45a8aa7454fbf53e"
     },
+    "figma-generate-design": {
+      "source": "figma/mcp-server-guide",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/figma-generate-design/SKILL.md",
+      "computedHash": "2f1e4d76ae361a3dd17e7f9c1d8d9f38c7e82b4904b1847297aa7d8e321a3b2d"
+    },
     "firecrawl": {
       "source": "firecrawl/cli",
       "sourceType": "github",
