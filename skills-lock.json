@@ -28,6 +28,12 @@
       "skillPath": "skills/ai-seo/SKILL.md",
       "computedHash": "2b2dc6fe6156b9338e1b181670b1c3e2b215d980327f3bbd5aff9d069decd56d"
     },
+    "brainstorming": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/brainstorming/SKILL.md",
+      "computedHash": "b58d55b64742ecd37923985ec7bdfbe678ffbcb9895562abd28c0a32dcacd7fb"
+    },
     "churn-prevention": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
