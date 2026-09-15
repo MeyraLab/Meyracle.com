@@ -8,6 +8,13 @@
       "skillPath": "skills/ai-seo/SKILL.md",
       "computedHash": "2b2dc6fe6156b9338e1b181670b1c3e2b215d980327f3bbd5aff9d069decd56d"
     },
+    "churn-prevention": {
+      "source": "coreyhaines31/marketingskills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/churn-prevention/SKILL.md",
+      "computedHash": "527c4740617d9eeea66e14c3f7b7ecede41d6b0520c252f413fdfd0b763a6c64"
+    },
     "competitors": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
