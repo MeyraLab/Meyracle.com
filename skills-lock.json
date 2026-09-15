@@ -35,6 +35,13 @@
       "skillPath": "skills/android/SKILL.md",
       "computedHash": "4dd3502bf04dc3b81a58ca1af9a1a7fb08a0e35359db2a59530f9105331758b2"
     },
+    "apple-design": {
+      "source": "emilkowalski/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/apple-design/SKILL.md",
+      "computedHash": "eca2b87ed3f18cfa1f7405a4c63c48775853130f21da8658e1b99a3add785f61"
+    },
     "apple-hig-designer": {
       "source": "jamesrochabrun/skills",
       "ref": "main",
