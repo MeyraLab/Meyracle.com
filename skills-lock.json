@@ -13,6 +13,13 @@
       "sourceType": "github",
       "skillPath": "skills/firecrawl/SKILL.md",
       "computedHash": "d4aeeccee5e30d0b41db63cbae1bf99627ada6ed2939701453c80dd8a15d6e75"
+    },
+    "seo-geo": {
+      "source": "ReScienceLab/opc-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "56f90ba46b36563bb5461feb8462aed9283e74dfc4cdac2a98c42c4bc86a95be"
     }
   }
 }
