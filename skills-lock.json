@@ -42,6 +42,13 @@
       "skillPath": "skills/apple-hig-designer/SKILL.md",
       "computedHash": "d6f35edf97a7545d967e4d5bbb5666712d732c9e40328835d8f3f585ae416f0a"
     },
+    "apple-ui-designer": {
+      "source": "heyman333/atelier-ui",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/apple-ui-designer/SKILL.md",
+      "computedHash": "26d43c0a38e7a0ad8cf2cd5418d48ca7525873cc60f203ac67fcf024ce577eb3"
+    },
     "brainstorming": {
       "source": "obra/superpowers",
       "sourceType": "github",
