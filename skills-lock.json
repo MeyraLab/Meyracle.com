@@ -125,6 +125,13 @@
       "skillPath": "pm-market-research/skills/customer-journey-map/SKILL.md",
       "computedHash": "793689f403818a1a357e5fac0f36f9a83397fbca2ed9e56de849cfc957010f68"
     },
+    "design-taste-frontend": {
+      "source": "leonxlnx/taste-skill",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "6d838b246d0e35d0b53f4f23f98ba7a1dd561937e64f7d0c7553b0928e376c3e"
+    },
     "directory-submissions": {
       "source": "coreyhaines31/marketingskills",
       "ref": "main",
@@ -144,6 +151,12 @@
       "sourceType": "github",
       "skillPath": "skills/figma-generate-design/SKILL.md",
       "computedHash": "2f1e4d76ae361a3dd17e7f9c1d8d9f38c7e82b4904b1847297aa7d8e321a3b2d"
+    },
+    "figma-use": {
+      "source": "figma/mcp-server-guide",
+      "sourceType": "github",
+      "skillPath": "skills/figma-use/SKILL.md",
+      "computedHash": "8f47d7d01077fc958854a5114c00c0462a6d2e4355ac5f01b94b25b16179d85a"
     },
     "firecrawl": {
       "source": "firecrawl/cli",
