@@ -171,6 +171,13 @@
       "skillPath": "skills/founder-sales/SKILL.md",
       "computedHash": "4e2ba491b26e733aa9945b7daf0e3dfb13eda8328ac7bfb7adfebd8f575ffb7c"
     },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+    },
     "grill-with-docs": {
       "source": "mattpocock/skills",
       "ref": "main",
