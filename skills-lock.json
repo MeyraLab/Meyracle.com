@@ -110,6 +110,12 @@
       "skillPath": "skills/onboarding/SKILL.md",
       "computedHash": "e1afc992d94288dad5ead64cea7276dea14a58e539889bf0cc26f7503685fd11"
     },
+    "product-manager-toolkit": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/product-manager-toolkit/SKILL.md",
+      "computedHash": "3a2dbfb22edc64c6923523734e0d21e0abfd7890db1d0f292e953eb67b6a1104"
+    },
     "product-marketing": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
