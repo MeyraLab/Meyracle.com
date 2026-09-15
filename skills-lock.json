@@ -28,6 +28,13 @@
       "skillPath": "skills/ai-seo/SKILL.md",
       "computedHash": "2b2dc6fe6156b9338e1b181670b1c3e2b215d980327f3bbd5aff9d069decd56d"
     },
+    "android-design-guidelines": {
+      "source": "ehmo/platform-design-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/android/SKILL.md",
+      "computedHash": "4dd3502bf04dc3b81a58ca1af9a1a7fb08a0e35359db2a59530f9105331758b2"
+    },
     "brainstorming": {
       "source": "obra/superpowers",
       "sourceType": "github",
