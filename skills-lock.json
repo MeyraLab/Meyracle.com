@@ -192,6 +192,13 @@
       "skillPath": "skills/productivity/handoff/SKILL.md",
       "computedHash": "20e5f4afdef502637510bc5c64d27645d3c85c88df9cb006824bbb0980166319"
     },
+    "image-to-code": {
+      "source": "leonxlnx/taste-skill",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/image-to-code-skill/SKILL.md",
+      "computedHash": "58517b03b2a01f4c9ba65861559d03df931400871bbc200978c975b24bb92c73"
+    },
     "just-scrape": {
       "source": "scrapegraphai/just-scrape",
       "ref": "main",
