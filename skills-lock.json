@@ -218,6 +218,13 @@
       "skillPath": "skills/figma-use/SKILL.md",
       "computedHash": "8f47d7d01077fc958854a5114c00c0462a6d2e4355ac5f01b94b25b16179d85a"
     },
+    "find-animation-opportunities": {
+      "source": "emilkowalski/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/find-animation-opportunities/SKILL.md",
+      "computedHash": "465d087c41768e4f14ed640dd049036009f613feb55baaa5831b68b33178f9d2"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "ref": "main",
