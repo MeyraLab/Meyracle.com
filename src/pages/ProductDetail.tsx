@@ -44,9 +44,13 @@ export function ProductDetail() {
             <h1 className="text-3xl font-medium tracking-tight text-text-primary sm:text-4xl">
               {product.name}
             </h1>
-            {product.tag && <span className="mt-2 inline-block text-sm text-text-muted">{product.tag}</span>}
+            {product.tag && (
+              <span className="mt-2 inline-flex items-center rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs text-text-muted">
+                {product.tag}
+              </span>
+            )}
           </div>
-          <div className="text-2xl font-medium text-text-primary">{product.price}</div>
+          <div className="font-mono text-2xl font-medium text-text-primary">{product.price}</div>
         </div>
 
         <p className="mt-6 text-base leading-relaxed text-text-secondary">
@@ -176,7 +180,7 @@ export function ProductDetail() {
               <p className="mb-2 font-medium text-text-primary">加微信购买</p>
               <p className="mb-3 text-text-secondary">
                 微信号：
-                <span className="select-all font-medium text-text-primary">
+                <span className="select-all font-mono font-medium text-text-primary">
                   {product.wechat || studio.wechat}
                 </span>
               </p>

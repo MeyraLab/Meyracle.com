@@ -32,10 +32,12 @@ export function ProductCard({ product }: ProductCardProps) {
         <div>
           <h3 className="text-base font-medium text-text-primary">{product.name}</h3>
           {product.tag && (
-            <span className="mt-1 inline-block text-xs text-text-muted">{product.tag}</span>
+            <span className="mt-1.5 inline-flex items-center rounded-full border border-border bg-canvas px-2 py-0.5 text-[11px] text-text-muted">
+              {product.tag}
+            </span>
           )}
         </div>
-        <span className="shrink-0 text-sm font-medium text-text-primary">{product.price}</span>
+        <span className="shrink-0 font-mono text-sm font-medium text-text-primary">{product.price}</span>
       </div>
 
       <p className="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">{product.description}</p>
