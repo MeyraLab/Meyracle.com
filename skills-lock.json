@@ -149,6 +149,12 @@
       "skillPath": "skills/cloudflare-one-migrations/SKILL.md",
       "computedHash": "24b397f739cc639f8bff90255a8c237c14ab84753a04ccc934e9a7030dce9549"
     },
+    "codebase-design": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/codebase-design/SKILL.md",
+      "computedHash": "5a17552cc1482f1a40124bf4e6c9dbd90ac0dbb47e71c07d47369f9e5f2ae3b5"
+    },
     "competitors": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
