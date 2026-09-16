@@ -491,6 +491,13 @@
       "skillPath": "skills/turnstile-spin/SKILL.md",
       "computedHash": "62a5165f9a3a8c92561351529c3c4fd0d0777ad2f2c873494aed6113e024dba1"
     },
+    "ux-writing": {
+      "source": "slb2248/ai-ux-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/ux-writing/SKILL.md",
+      "computedHash": "823f968ab26f95d37d74003c241d5b597f730a6312bca5a4df9548b9d716b37c"
+    },
     "vercel-react-best-practices": {
       "source": "vercel-labs/agent-skills",
       "ref": "main",
