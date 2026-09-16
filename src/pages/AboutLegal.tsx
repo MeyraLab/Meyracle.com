@@ -29,7 +29,7 @@ export function Privacy() {
         <h1 className="text-3xl font-medium tracking-tight">隐私</h1>
         <div className="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary">
           <p>本站是静态展示与商店入口。默认不收集账户密码，也不在浏览器里存支付信息。</p>
-          <p>Vibe Coding 购买目前通过微信沟通。Inkpai 与图片书摘的运行数据在各自应用域名下，不经过本站表单。</p>
+          <p>Vibe Coding 购买目前通过微信沟通。Inkpai 与图片书摘的运行数据在各自应用域名下（图片书摘现为 bk.meyracle.com），不经过本站表单。</p>
           <p>若以后上线登录或订单，会单独说明收集范围，并只在服务端处理密钥。</p>
           <p>
             联系：<a href={`mailto:${studio.email}`}>{studio.email}</a>
