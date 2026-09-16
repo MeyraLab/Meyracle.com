@@ -166,6 +166,12 @@
       "skillPath": "design/skills/design-handoff/SKILL.md",
       "computedHash": "3fda0bed51f3aa3ff110cd517388b0b9afa77f6f568700ab9ddbaa5148ae8903"
     },
+    "design-motion-principles": {
+      "source": "kylezantos/design-motion-principles",
+      "sourceType": "github",
+      "skillPath": "skills/design-motion-principles/SKILL.md",
+      "computedHash": "6410c1844f511249f11f38d30d217cfecf7f595f45a868d74284b6380bab47d7"
+    },
     "design-taste-frontend": {
       "source": "leonxlnx/taste-skill",
       "ref": "main",
