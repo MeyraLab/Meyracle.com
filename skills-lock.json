@@ -491,6 +491,13 @@
       "skillPath": "skills/turnstile-spin/SKILL.md",
       "computedHash": "62a5165f9a3a8c92561351529c3c4fd0d0777ad2f2c873494aed6113e024dba1"
     },
+    "unslop": {
+      "source": "cursor/plugins",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "pstack/skills/unslop/SKILL.md",
+      "computedHash": "3b8676e7461f44026b4d555ff0f3369a761df6033b9b9e2cd5152693cb20fbb2"
+    },
     "ux-writing": {
       "source": "slb2248/ai-ux-skills",
       "ref": "main",
