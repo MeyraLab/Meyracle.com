@@ -52,7 +52,7 @@ export const offerings: Offering[] = [
     summary:
       '在浏览器里把文字排成适合手机阅读的样子，复制到公众号后台，格式不会乱。',
     cta: '打开 Inkpai',
-    appUrl: 'https://inkpai.lovable.app',
+    appUrl: 'https://inkpai.meyracle.com',
     repoUrl: 'https://github.com/MeyraLab/inkpai',
   },
   {

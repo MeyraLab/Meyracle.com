@@ -28,8 +28,8 @@ export function Privacy() {
         <div className="mt-8 space-y-4 text-sm leading-relaxed text-text-secondary">
           <p>这个站是介绍和商店入口。默认不收集账号密码，也不在浏览器里存支付信息。</p>
           <p>
-            Vibe Coding 购买目前通过微信沟通。Inkpai 与图片书摘的使用数据在各自的产品地址下（图片书摘现在是
-            bk.meyracle.com），不经过这个站的表单。
+            Vibe Coding 购买目前通过微信沟通。Inkpai 与图片书摘的使用数据在各自的产品地址下（Inkpai 现在是
+            inkpai.meyracle.com，图片书摘现在是 bk.meyracle.com），不经过这个站的表单。
           </p>
           <p>以后如果做登录或订单，会另外说明收集范围，密钥只放在服务端。</p>
           <p>
