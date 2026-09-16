@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { SiteShell } from '../components/SiteShell'
 import { products } from '../data/products'
+import { studio } from '../data/studio'
 
 export function ProductDetail() {
   const { id } = useParams<{ id: string }>()
@@ -9,36 +11,27 @@ export function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-canvas text-text-primary flex items-center justify-center">
-        <div className="text-center">
+      <SiteShell>
+        <main className="mx-auto max-w-3xl px-4 py-24 text-center">
           <p className="text-text-secondary mb-4">产品不存在</p>
-          <Link to="/store" className="text-accent hover:underline">
+          <Link to="/store" className="text-sm hover:underline">
             返回商店
           </Link>
-        </div>
-      </div>
+        </main>
+      </SiteShell>
     )
   }
 
   return (
-    <div className="min-h-screen bg-canvas text-text-primary">
-      {/* 简单导航 */}
-      <header className="sticky top-0 z-50 border-b border-border bg-canvas/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link to="/store" className="text-sm font-medium tracking-tight text-text-primary">
-            ← 返回商店
-          </Link>
-        </div>
-      </header>
+    <SiteShell>
+      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+        <Link to="/store" className="text-sm text-text-muted hover:text-text-primary">
+          ← 商店
+        </Link>
 
-      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-        <div className="mb-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-surface-elevated">
+        <div className="mt-6 mb-8 aspect-[16/9] w-full overflow-hidden rounded-[24px] bg-surface">
           {product.image ? (
-            <img
-              src={product.image}
-              alt={product.name}
-              className="h-full w-full object-cover"
-            />
+            <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
               <span className="text-text-muted">产品截图</span>
@@ -48,12 +41,10 @@ export function ProductDetail() {
 
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-medium tracking-tight text-text-primary">
+            <h1 className="text-3xl font-medium tracking-tight text-text-primary sm:text-4xl">
               {product.name}
             </h1>
-            {product.tag && (
-              <span className="mt-2 inline-block text-sm text-accent">{product.tag}</span>
-            )}
+            {product.tag && <span className="mt-2 inline-block text-sm text-text-muted">{product.tag}</span>}
           </div>
           <div className="text-2xl font-medium text-text-primary">{product.price}</div>
         </div>
@@ -62,16 +53,13 @@ export function ProductDetail() {
           {product.longDescription || product.description}
         </p>
 
-        {/* 功能列表 */}
         {product.features && product.features.length > 0 && (
           <section className="mt-12">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              包含什么
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">包含什么</h2>
             <ul className="mt-4 space-y-3">
               {product.features.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-text-primary" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -79,12 +67,9 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 适用人群 */}
         {product.audience && product.audience.length > 0 && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              适合谁
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">适合谁</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {product.audience.map((item) => (
                 <span
@@ -98,16 +83,13 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 使用场景 */}
         {product.scenarios && product.scenarios.length > 0 && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              使用场景
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">使用场景</h2>
             <ul className="mt-4 space-y-3">
               {product.scenarios.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-text-muted" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -115,16 +97,13 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 购买后你会收到什么 */}
         {product.deliverables && product.deliverables.length > 0 && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              购买后你会收到什么
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">买完你会收到什么</h2>
             <ul className="mt-4 space-y-3">
               {product.deliverables.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-text-primary" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -132,16 +111,13 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 如何开始使用 */}
         {product.gettingStarted && product.gettingStarted.length > 0 && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              如何开始使用
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">怎么开始用</h2>
             <ol className="mt-4 space-y-3">
               {product.gettingStarted.map((item, index) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-text-secondary">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-xs font-medium text-accent">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-surface text-xs font-medium text-text-primary">
                     {index + 1}
                   </span>
                   <span className="pt-0.5">{item}</span>
@@ -151,12 +127,9 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 适用工具 */}
         {product.supportedTools && product.supportedTools.length > 0 && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              适用工具
-            </h2>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">适用工具</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {product.supportedTools.map((tool) => (
                 <span
@@ -170,15 +143,10 @@ export function ProductDetail() {
           </section>
         )}
 
-        {/* 更新方式 */}
         {product.updatePolicy && (
           <section className="mt-10">
-            <h2 className="text-lg font-medium tracking-tight text-text-primary">
-              更新方式
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-              {product.updatePolicy}
-            </p>
+            <h2 className="text-lg font-medium tracking-tight text-text-primary">更新方式</h2>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">{product.updatePolicy}</p>
           </section>
         )}
 
@@ -189,36 +157,35 @@ export function ProductDetail() {
                 href={product.buyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center justify-center rounded-full bg-cta px-8 text-sm font-medium text-cta-text transition-opacity hover:opacity-90"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-cta px-8 text-sm font-medium text-cta-text transition-opacity hover:opacity-80"
               >
                 立即购买
               </a>
             ) : (
               <button
                 onClick={() => setShowBuyTip(true)}
-                className="inline-flex h-11 items-center justify-center rounded-full bg-cta px-8 text-sm font-medium text-cta-text transition-opacity hover:opacity-90"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-cta px-8 text-sm font-medium text-cta-text transition-opacity hover:opacity-80"
               >
                 立即购买
               </button>
             )}
           </div>
 
-          <Link to="/" className="mt-2 text-sm text-text-muted hover:text-text-primary transition-colors">
-            ← 返回首页
-          </Link>
-
           {showBuyTip && (
-            <div className="rounded-xl border border-accent/30 bg-accent-soft p-5 text-sm">
-              <p className="font-medium text-text-primary mb-2">添加微信购买</p>
-              <p className="text-text-secondary mb-3">
-                微信号：<span className="text-accent font-medium select-all">{product.wechat || '请联系作者'}</span>
+            <div className="rounded-[20px] bg-surface p-5 text-sm">
+              <p className="mb-2 font-medium text-text-primary">加微信购买</p>
+              <p className="mb-3 text-text-secondary">
+                微信号：
+                <span className="select-all font-medium text-text-primary">
+                  {product.wechat || studio.wechat}
+                </span>
               </p>
-              <p className="text-text-muted text-xs leading-relaxed">
-                添加后请备注产品名称「{product.name}」，我会尽快发送下载链接。支持微信支付 / 支付宝。
+              <p className="text-xs leading-relaxed text-text-muted">
+                加上后请备注产品名称「{product.name}」，我会尽快发下载链接。支持微信支付 / 支付宝。
               </p>
               <button
                 onClick={() => setShowBuyTip(false)}
-                className="mt-4 text-xs text-text-secondary hover:text-text-primary transition-colors"
+                className="mt-4 text-xs text-text-secondary hover:text-text-primary"
               >
                 关闭
               </button>
@@ -226,16 +193,15 @@ export function ProductDetail() {
           )}
         </div>
 
-        {/* 购买说明 */}
-        <div className="mt-8 rounded-xl border border-border bg-surface p-5 text-sm text-text-secondary">
-          <p className="font-medium text-text-primary mb-2">购买方式</p>
-          <ul className="space-y-1.5 list-disc list-inside">
-            <li>点击「立即购买」后添加微信，备注产品名称</li>
-            <li>支付成功后我会发送下载链接到你的邮箱或微信</li>
-            <li>支持微信支付 / 支付宝（通过微信沟通）</li>
+        <div className="mt-8 rounded-[20px] bg-surface p-5 text-sm text-text-secondary">
+          <p className="mb-2 font-medium text-text-primary">购买方式</p>
+          <ul className="list-disc space-y-1.5 pl-4">
+            <li>点「立即购买」后加微信，备注产品名称</li>
+            <li>付完我会把下载链接发到微信或邮箱</li>
+            <li>支持微信支付 / 支付宝（走微信沟通）</li>
           </ul>
         </div>
       </main>
-    </div>
+    </SiteShell>
   )
 }
