@@ -70,6 +70,13 @@
       "skillPath": "skills/apple-ui-designer/SKILL.md",
       "computedHash": "26d43c0a38e7a0ad8cf2cd5418d48ca7525873cc60f203ac67fcf024ce577eb3"
     },
+    "better-colors": {
+      "source": "jakubkrehel/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/better-colors/SKILL.md",
+      "computedHash": "1a6ff21c2ee760744f119cf6166df95ab4d05335c771c04a2ecb4c49cbbe5f1c"
+    },
     "better-layout": {
       "source": "jakubkrehel/skills",
       "ref": "main",
