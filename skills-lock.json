@@ -220,6 +220,12 @@
       "skillPath": "skills/imagegen-frontend-mobile/SKILL.md",
       "computedHash": "9ab7f4f6ce66a3cff02bbf5894e5bd5af50bf5d6ef0adffdc88e8fab772fe44f"
     },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "d4cfdc3b7a18041ff02e1ad4b6377450e978e10928ba7e96377ff7d66994b490"
+    },
     "just-scrape": {
       "source": "scrapegraphai/just-scrape",
       "ref": "main",
