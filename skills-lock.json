@@ -146,6 +146,12 @@
       "skillPath": "skills/deprecated/design-an-interface/SKILL.md",
       "computedHash": "a2596e9fa2d50e23ba014f64a5b8f9df4eb56b846a52cad152899ef5eb97b085"
     },
+    "design-handoff": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "design/skills/design-handoff/SKILL.md",
+      "computedHash": "3fda0bed51f3aa3ff110cd517388b0b9afa77f6f568700ab9ddbaa5148ae8903"
+    },
     "design-taste-frontend": {
       "source": "leonxlnx/taste-skill",
       "ref": "main",
