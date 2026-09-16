@@ -208,6 +208,12 @@
       "skillPath": "design/skills/design-handoff/SKILL.md",
       "computedHash": "3fda0bed51f3aa3ff110cd517388b0b9afa77f6f568700ab9ddbaa5148ae8903"
     },
+    "design-md": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/stitch-utilities/skills/design-md/SKILL.md",
+      "computedHash": "d3a4c7d2f2715a33662c8b06ffc16035d01965a8b4ed81c2958fb22ae94760f8"
+    },
     "design-motion-principles": {
       "source": "kylezantos/design-motion-principles",
       "sourceType": "github",
