@@ -246,6 +246,12 @@
       "skillPath": "skills/emil-design-eng/SKILL.md",
       "computedHash": "51f2537e04d15911b41d78e2de24c36a0e26d41beae15e82a954fe5496a5eda9"
     },
+    "extract-design-system": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/extract-design-system/SKILL.md",
+      "computedHash": "b3bf8282c01ff2522b674c4d127c956811eb6a6b7ed7fe7c1bb76c0625d022c3"
+    },
     "figma-generate-design": {
       "source": "figma/mcp-server-guide",
       "ref": "main",
