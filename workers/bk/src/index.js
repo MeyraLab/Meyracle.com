@@ -52,6 +52,7 @@ export default {
     const headers = copyHeaders(request.headers)
     headers.set('X-Forwarded-Host', incoming.host)
     headers.set('X-Forwarded-Proto', 'https')
+    headers.set('X-BK-Proxy', '1')
 
     const init = {
       method: request.method,
