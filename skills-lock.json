@@ -30,7 +30,6 @@
     },
     "algorithmic-art": {
       "source": "anthropics/skills",
-      "ref": "main",
       "sourceType": "github",
       "skillPath": "skills/algorithmic-art/SKILL.md",
       "computedHash": "b2ca295de7f9c86c444f1fa21239e22e0eb7013ced1c652169b9402cc96ff744"
