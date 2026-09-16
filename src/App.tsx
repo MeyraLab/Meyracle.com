@@ -1,38 +1,27 @@
 import { useState } from 'react'
-import './index.css'
 import { ProductCard } from './components/ProductCard'
+import { SiteShell } from './components/SiteShell'
 import { products } from './data/products'
 
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   return (
-    <div className="min-h-screen bg-canvas text-text-primary">
-      {/* 导航 */}
-      <header className="sticky top-0 z-50 border-b border-border bg-canvas/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <a href="/" className="text-sm font-medium tracking-tight text-text-primary">
-            Vibe Coding
-          </a>
-          <nav className="flex max-w-[60%] items-center gap-4 overflow-x-auto whitespace-nowrap text-sm text-text-secondary sm:max-w-none sm:gap-6">
-            <a href="#products" className="shrink-0 hover:text-text-primary transition-colors">
-              产品
-            </a>
-            <a href="#about" className="shrink-0 hover:text-text-primary transition-colors">
-              关于
-            </a>
-            <a href="#updates" className="shrink-0 hover:text-text-primary transition-colors">
-              更新
-            </a>
-            <a href="#workflow" className="shrink-0 hover:text-text-primary transition-colors">
-              工作流
-            </a>
-            <a href="#faq" className="shrink-0 hover:text-text-primary transition-colors">
-              FAQ
-            </a>
-          </nav>
-        </div>
-      </header>
+    <SiteShell>
+      <nav className="mx-auto flex max-w-6xl gap-5 overflow-x-auto px-4 py-3 text-sm text-text-secondary sm:px-6">
+        <a href="#products" className="shrink-0 hover:text-text-primary">
+          工具
+        </a>
+        <a href="#workflow" className="shrink-0 hover:text-text-primary">
+          工作流
+        </a>
+        <a href="#updates" className="shrink-0 hover:text-text-primary">
+          更新
+        </a>
+        <a href="#faq" className="shrink-0 hover:text-text-primary">
+          FAQ
+        </a>
+      </nav>
 
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32">
@@ -342,29 +331,7 @@ function App() {
           })}
         </div>
       </section>
-
-      {/* 页脚 */}
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-10 sm:flex-row sm:items-center sm:px-6">
-          <div>
-            <div className="text-sm font-medium text-text-primary">Vibe Coding</div>
-            <p className="mt-1 text-sm text-text-muted">
-              让写代码也有 vibe
-            </p>
-          </div>
-          <div className="flex gap-6 text-sm text-text-secondary">
-            <a href="#products" className="hover:text-text-primary transition-colors">产品</a>
-            <a href="#about" className="hover:text-text-primary transition-colors">关于</a>
-            <a href="#updates" className="hover:text-text-primary transition-colors">更新</a>
-            <a href="#workflow" className="hover:text-text-primary transition-colors">工作流</a>
-            <a href="#faq" className="hover:text-text-primary transition-colors">FAQ</a>
-          </div>
-          <div className="text-sm text-text-muted">
-            © 2026 Vibe Coding
-          </div>
-        </div>
-      </footer>
-    </div>
+    </SiteShell>
   )
 }
 

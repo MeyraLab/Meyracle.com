@@ -12,8 +12,8 @@ export function ProductDetail() {
       <div className="min-h-screen bg-canvas text-text-primary flex items-center justify-center">
         <div className="text-center">
           <p className="text-text-secondary mb-4">产品不存在</p>
-          <Link to="/" className="text-accent hover:underline">
-            返回首页
+          <Link to="/store" className="text-accent hover:underline">
+            返回商店
           </Link>
         </div>
       </div>
@@ -25,8 +25,8 @@ export function ProductDetail() {
       {/* 简单导航 */}
       <header className="sticky top-0 z-50 border-b border-border bg-canvas/80 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link to="/" className="text-sm font-medium tracking-tight text-text-primary">
-            ← 返回 Vibe Coding
+          <Link to="/store" className="text-sm font-medium tracking-tight text-text-primary">
+            ← 返回商店
           </Link>
         </div>
       </header>
