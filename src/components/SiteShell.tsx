@@ -45,9 +45,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
             onClick={() => setOpen((value) => !value)}
           >
             <span className="sr-only">{open ? '关闭菜单' : '打开菜单'}</span>
-            <span className="flex flex-col gap-1.5">
-              <span className={`h-px w-4 bg-current transition ${open ? 'translate-y-[3.5px] rotate-45' : ''}`} />
-              <span className={`h-px w-4 bg-current transition ${open ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+            <span className="flex flex-col items-center justify-center gap-[5px]">
+              <span className={`block h-[1.5px] w-[18px] bg-text-primary transition ${open ? 'translate-y-[3.25px] rotate-45' : ''}`} />
+              <span className={`block h-[1.5px] w-[18px] bg-text-primary transition ${open ? '-translate-y-[3.25px] -rotate-45' : ''}`} />
             </span>
           </button>
         </div>

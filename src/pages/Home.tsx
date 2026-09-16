@@ -11,7 +11,7 @@ function WindowChrome({ children }: { children: ReactNode }) {
         <span className="h-2 w-2 rounded-full bg-white/20" />
         <span className="h-2 w-2 rounded-full bg-white/20" />
       </div>
-      {children}
+      <div className="min-h-[168px]">{children}</div>
     </div>
   )
 }
@@ -84,7 +84,9 @@ export function Home() {
           打开就能用。
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
-          {studio.description}
+          Inkpai 排公众号。图片书摘做成图。
+          <br />
+          商店卖指令和模板。
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a
