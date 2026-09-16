@@ -59,8 +59,8 @@ export const offerings: Offering[] = [
     status: 'live',
     tagline: '把书摘做成可发布的图片',
     summary:
-      '图片书摘编辑器：从摘录到排版成图。应用继续独立运行，主站提供发现、说明与之后的账号/付费入口。',
-    appUrl: 'https://imageexcerpt.lovable.app',
+      '图片书摘（BK）编辑器：从摘录到排版成图。应用跑在 bk.meyracle.com，主站提供发现、说明与之后的账号/付费入口。',
+    appUrl: 'https://bk.meyracle.com',
     repoUrl: 'https://github.com/MeyraLab/imageexcerpt',
   },
   {
