@@ -19,8 +19,10 @@ export interface Offering {
   name: string
   kind: OfferingKind
   status: OfferingStatus
+  kicker: string
   tagline: string
   summary: string
+  cta: string
   /** Where the product currently runs. Hub pages describe; they do not swallow the app. */
   appUrl?: string
   repoUrl?: string
@@ -31,9 +33,9 @@ export const studio: Studio = {
   name: 'Meyracle',
   legalName: 'Meyracle',
   domain: 'meyracle.com',
-  tagline: '先把结构做对，再把产品做出来。',
+  tagline: '三个小工具。打开就能用。',
   description:
-    'Meyracle 是 MEYRA 的主站。这里放正在运营的产品、之后会上线的商业服务，以及统一的品牌与安全基线。每个产品有自己的形态，但共享同一套工作室数据。',
+    'Inkpai 排公众号。图片书摘做成图。商店卖指令和模板。有新的也会放在这里。',
   wechat: 'MEYRA1219',
   email: 'hongmeichen1219@gmail.com',
 }
@@ -45,9 +47,11 @@ export const offerings: Offering[] = [
     name: 'Inkpai',
     kind: 'app',
     status: 'live',
-    tagline: '网页端公众号文章编辑器',
+    kicker: '排版',
+    tagline: '网页里排公众号文章',
     summary:
-      '在干净画布里把文字排成适合手机阅读、复制到公众号后台格式不乱的文章。编辑器继续独立运行，主站负责品牌、入口与后续商业化。',
+      '在浏览器里把文字排成适合手机阅读的样子，复制到公众号后台，格式不会乱。',
+    cta: '打开 Inkpai',
     appUrl: 'https://inkpai.lovable.app',
     repoUrl: 'https://github.com/MeyraLab/inkpai',
   },
@@ -57,9 +61,10 @@ export const offerings: Offering[] = [
     name: '图片书摘',
     kind: 'app',
     status: 'live',
-    tagline: '把书摘做成可发布的图片',
-    summary:
-      '图片书摘（BK）编辑器：从摘录到排版成图。应用跑在 bk.meyracle.com，主站提供发现、说明与之后的账号/付费入口。',
+    kicker: '成图',
+    tagline: '把书摘做成图',
+    summary: '摘一段文字，排成一张能发的图。打开 bk.meyracle.com 就能用。',
+    cta: '打开图片书摘',
     appUrl: 'https://bk.meyracle.com',
     repoUrl: 'https://github.com/MeyraLab/imageexcerpt',
   },
@@ -69,18 +74,16 @@ export const offerings: Offering[] = [
     name: 'Vibe Coding',
     kind: 'download',
     status: 'live',
-    tagline: '中文场景的 Prompt、规则和脚手架',
-    summary:
-      '给周末独立开发者的小工具商店：Vibe Prompt Kit、Code Flow 模板、AI 编程速查。购买仍走微信，发货为文件。',
+    kicker: '商店',
+    tagline: '指令、规则、脚手架',
+    summary: '给周末写代码的人用：场景指令、项目模板、卡住时能翻的速查。微信买，发文件。',
+    cta: '进商店',
     storePath: '/store',
   },
 ]
 
-export const plannedServices: Pick<Offering, 'id' | 'name' | 'tagline' | 'status'>[] = [
-  {
-    id: 'future-services',
-    name: '商业产品与服务',
-    tagline: '同一套 Offer / Order 模型上扩展，不另起一套字段。',
-    status: 'planned',
-  },
-]
+export const plannedNote = {
+  id: 'later',
+  name: '之后的产品',
+  tagline: '还在做。做好了会放在这里。',
+}
