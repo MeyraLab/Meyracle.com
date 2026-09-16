@@ -139,6 +139,13 @@
       "skillPath": "pm-market-research/skills/customer-journey-map/SKILL.md",
       "computedHash": "793689f403818a1a357e5fac0f36f9a83397fbca2ed9e56de849cfc957010f68"
     },
+    "design-an-interface": {
+      "source": "mattpocock/skills",
+      "ref": "f958fa17c1b62c3f7be38fc09512669acf6b64fc",
+      "sourceType": "github",
+      "skillPath": "skills/deprecated/design-an-interface/SKILL.md",
+      "computedHash": "a2596e9fa2d50e23ba014f64a5b8f9df4eb56b846a52cad152899ef5eb97b085"
+    },
     "design-taste-frontend": {
       "source": "leonxlnx/taste-skill",
       "ref": "main",
