@@ -71,13 +71,13 @@ export const products: Product[] = [
     description: '别先花一小时配主题和目录。装好大约 15 分钟就能写功能。',
     price: '¥79',
     longDescription:
-      'Vite + React + TypeScript + Tailwind 脚手架。暗色主题、目录和常用开发配置已经放好。周末开工时直接安装运行，不用先配一小时环境。',
+      'Vite + React + TypeScript + Tailwind 脚手架。与 Meyracle 统一的设计系统变量（极简黑白灰基底、卡片圆角与字体层级）、标准组件目录和常用开发配置已经就绪。周末开工时直接安装运行，不用先配一小时环境。',
     buyUrl: '',
     image: '/products/code-flow.svg',
     wechat: 'MEYRA1219',
     features: [
       'Vite + React + TypeScript + Tailwind 完整配置',
-      '内置暗色主题和基础设计变量',
+      '与 Meyracle 统一的设计变量（深浅底色、圆角与排版规范）',
       '预设组件结构和目录，少从零组织代码',
       '热更新、路径别名等开发配置已开好',
       '当新产品起点，也可以按需删',
@@ -96,7 +96,7 @@ export const products: Product[] = [
     ],
     deliverables: [
       '完整项目源码（安装依赖就能跑）',
-      '暗色主题和设计变量',
+      '与 Meyracle 统一的设计系统变量与组件基础',
       'README 启动说明',
       '目录和组件说明',
       '后续模板更新',

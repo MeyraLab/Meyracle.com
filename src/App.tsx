@@ -145,7 +145,9 @@ function App() {
             <p>
               我是独立开发者，周末才有整块时间写东西。配环境和反复改指令最耗这点时间。这些工具先给我自己用，也卖给同样赶周末的人。
             </p>
-            <p>微信 {studio.wechat}。买完发文件。</p>
+            <p>
+              微信 <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>。买完发文件。
+            </p>
           </div>
         </div>
       </section>
@@ -160,7 +162,7 @@ function App() {
         <div className="max-w-2xl space-y-6">
           <div className="border-l-2 border-border pl-5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm font-medium text-text-primary">2026.08.16</span>
+              <span className="font-mono text-sm font-medium text-text-primary">2026.08.16</span>
               <span className="rounded-full bg-surface px-2.5 py-0.5 text-xs text-text-secondary">全站</span>
             </div>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
@@ -171,7 +173,7 @@ function App() {
           </div>
           <div className="border-l-2 border-border pl-5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm font-medium text-text-primary">2026.08.16</span>
+              <span className="font-mono text-sm font-medium text-text-primary">2026.08.16</span>
               <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-text-secondary">
                 文案
               </span>
@@ -184,7 +186,7 @@ function App() {
           </div>
           <div className="border-l-2 border-border pl-5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm font-medium text-text-primary">2026.08</span>
+              <span className="font-mono text-sm font-medium text-text-primary">2026.08</span>
               <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-text-secondary">
                 方向
               </span>
@@ -249,7 +251,17 @@ function App() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 text-sm leading-relaxed text-text-secondary">{item.a}</p>
+                    <p className="px-5 pb-4 text-sm leading-relaxed text-text-secondary">
+                      {item.q === '怎么买？' ? (
+                        <>
+                          进产品详情页，点「立即购买」，加微信{' '}
+                          <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>
+                          ，备注产品名称。支持微信支付和支付宝。
+                        </>
+                      ) : (
+                        item.a
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -56,7 +56,7 @@ function StorePreview() {
         <p>vibe-prompt-kit.md</p>
         <p>code-flow/</p>
         <p>ai-cheatsheet.md</p>
-        <p className="mt-2 text-[#ff6b35]">¥29 – ¥79 · 微信发货</p>
+        <p className="mt-2 text-white/90">¥29 – ¥79 · 微信发货</p>
       </div>
     </WindowChrome>
   )
@@ -144,7 +144,8 @@ export function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">入口</p>
             <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl">从这里进去。</h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-text-secondary">
-              排公众号用 Inkpai。书摘成图用图片书摘。买指令和模板进商店。问事加微信 {studio.wechat}。
+              排公众号用 Inkpai。书摘成图用图片书摘。买指令和模板进商店。问事加微信{' '}
+              <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>。
             </p>
             <Link
               to="/about"
