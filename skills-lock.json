@@ -484,6 +484,13 @@
       "skillPath": "skills/seo-geo/SKILL.md",
       "computedHash": "56f90ba46b36563bb5461feb8462aed9283e74dfc4cdac2a98c42c4bc86a95be"
     },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "computedHash": "f615de216e085a84e31593ad0fa9062232adc40cd87b7c7ab2b8e49abf6500be"
+    },
     "systematic-debugging": {
       "source": "obra/superpowers",
       "sourceType": "github",
