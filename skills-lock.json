@@ -153,6 +153,13 @@
       "skillPath": "pm-market-research/skills/customer-journey-map/SKILL.md",
       "computedHash": "793689f403818a1a357e5fac0f36f9a83397fbca2ed9e56de849cfc957010f68"
     },
+    "d3-visualization": {
+      "source": "slb2248/ai-ux-skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/d3-visualization/SKILL.md",
+      "computedHash": "91d2f2242d2fcaca600b7e94483ebbb6862ab2473cac59a6179c8fc15e44c99a"
+    },
     "deploy-to-vercel": {
       "source": "vercel-labs/agent-skills",
       "ref": "main",
@@ -285,6 +292,13 @@
       "sourceType": "github",
       "skillPath": ".agents/skills/impeccable/SKILL.md",
       "computedHash": "d4cfdc3b7a18041ff02e1ad4b6377450e978e10928ba7e96377ff7d66994b490"
+    },
+    "improve-animations": {
+      "source": "emilkowalski/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/improve-animations/SKILL.md",
+      "computedHash": "524ea241e41d58bbdd8e288700fe24f5725e2a2f3ae7186ad7cebf9055058356"
     },
     "just-scrape": {
       "source": "scrapegraphai/just-scrape",
