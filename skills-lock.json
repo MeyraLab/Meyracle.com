@@ -191,6 +191,13 @@
       "skillPath": "skills/figma-use/SKILL.md",
       "computedHash": "8f47d7d01077fc958854a5114c00c0462a6d2e4355ac5f01b94b25b16179d85a"
     },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "b146008599c31057cef1c145774cea5d5afb30e8f43fa802e47a4b461419aaaf"
+    },
     "firecrawl": {
       "source": "firecrawl/cli",
       "sourceType": "github",
