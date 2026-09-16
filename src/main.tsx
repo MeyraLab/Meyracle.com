@@ -7,6 +7,9 @@ import { Home } from './pages/Home'
 import { ProductDetail } from './pages/ProductDetail'
 import { About, NotFound, Privacy, Terms } from './pages/AboutLegal'
 import { ProductsIndex, VenturePage } from './pages/Ventures'
+import { applyTheme, getInitialTheme } from './theme'
+
+applyTheme(getInitialTheme())
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
