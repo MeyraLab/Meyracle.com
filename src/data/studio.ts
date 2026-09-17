@@ -37,7 +37,7 @@ export const studio: Studio = {
   description:
     'Inkpai 排公众号。图片书摘做成图。商店卖指令和模板。有新的也会放在这里。',
   wechat: 'MEYRA1219',
-  email: 'hongmeichen1219@gmail.com',
+  email: 'meyrasupport@gmail.com',
 }
 
 export const offerings: Offering[] = [
