@@ -212,12 +212,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <p className="text-[11px] font-medium text-text-primary">法律</p>
                 <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
                   <li>
-                    <Link to="/legal/privacy" className="transition-colors hover:text-text-primary">
+                    <Link to="/privacy" className="transition-colors hover:text-text-primary">
                       隐私
                     </Link>
                   </li>
                   <li>
-                    <Link to="/legal/terms" className="transition-colors hover:text-text-primary">
+                    <Link to="/terms" className="transition-colors hover:text-text-primary">
                       条款
                     </Link>
                   </li>
