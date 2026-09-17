@@ -20,6 +20,10 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/legal/privacy", "destination": "/privacy", "permanent": true },
+    { "source": "/legal/terms", "destination": "/terms", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!assets/|products/|favicon.svg|robots.txt|sitemap.xml|.well-known/).*)", "destination": "/index.html" }
   ]
