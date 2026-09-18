@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { SiteShell } from '../components/SiteShell'
 import { studio } from '../data/studio'
 
@@ -94,20 +95,27 @@ export function About() {
       <main className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">关于</p>
         <h1 className="mt-4 text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-          我是 MEYRA。
+          关于 Meyracle
         </h1>
-        <div className="mt-8 space-y-4 text-base leading-relaxed text-text-secondary">
+        <div className="mt-8 space-y-8 text-base leading-relaxed text-text-secondary">
           <p>
-            {studio.name} 是我放产品的地方。现在有 Inkpai 和图片书摘。
+            Meyracle 是由 MEYRA 独立开发和运营的产品品牌。目前包括 Inkpai 与图片书摘。
           </p>
-          <p>
-            联系我：微信{' '}
-            <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>，或{' '}
-            <a href={`mailto:${studio.email}`} className="font-mono text-text-primary hover:underline">
-              {studio.email}
-            </a>
-            。
-          </p>
+          <section className="space-y-3">
+            <h2 className="text-xl font-medium tracking-[-0.02em] text-text-primary">MEYRA</h2>
+            <p>负责产品、设计与开发。新的产品完成后，也会收录在 Meyracle。</p>
+          </section>
+          <section className="space-y-3">
+            <h2 className="text-xl font-medium tracking-[-0.02em] text-text-primary">联系方式</h2>
+            <p>
+              微信 <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>
+              <br />
+              邮箱{' '}
+              <a href={`mailto:${studio.email}`} className="font-mono text-text-primary hover:underline">
+                {studio.email}
+              </a>
+            </p>
+          </section>
         </div>
       </main>
     </SiteShell>
@@ -730,9 +738,13 @@ export function NotFound() {
   return (
     <SiteShell>
       <main className="mx-auto max-w-2xl px-4 py-24 text-center">
-        <p className="text-text-secondary">页面不存在。</p>
+        <h1 className="text-3xl font-medium tracking-[-0.04em] text-text-primary">页面不存在</h1>
+        <Link to="/" className="mt-5 inline-block text-sm text-text-secondary hover:text-text-primary">
+          返回首页
+        </Link>
       </main>
     </SiteShell>
   )
 }
+
 

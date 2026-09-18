@@ -8,10 +8,10 @@ export function ProductsIndex() {
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">产品</p>
         <h1 className="mt-4 max-w-2xl text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-          现在能用的。
+          产品目录
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-          Inkpai 排公众号文章。图片书摘把一段文字做成图。
+          Inkpai 用于公众号文章排版；图片书摘用于文字成图。
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {offerings.map((item) => (
@@ -42,9 +42,9 @@ export function VenturePage() {
     return (
       <SiteShell>
         <main className="mx-auto max-w-3xl px-4 py-24 text-center">
-          <p className="text-text-secondary">没有这个产品。</p>
+          <p className="text-text-secondary">未找到该产品</p>
           <Link to="/products" className="mt-4 inline-block text-sm hover:underline">
-            返回产品列表
+            查看产品目录
           </Link>
         </main>
       </SiteShell>
@@ -72,6 +72,14 @@ export function VenturePage() {
           >
             {item.cta}
           </a>
+          {item.pricingPath ? (
+            <Link
+              to={item.pricingPath}
+              className="inline-flex h-12 items-center rounded-full border border-border px-6 text-sm text-text-primary transition-colors hover:border-border-strong"
+            >
+              查看价格与权益
+            </Link>
+          ) : null}
           {item.repoUrl ? (
             <a
               href={item.repoUrl}
@@ -79,7 +87,7 @@ export function VenturePage() {
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center px-2 text-sm text-text-secondary hover:text-text-primary"
             >
-              源码 →
+              查看源码 →
             </a>
           ) : null}
         </div>
@@ -87,4 +95,5 @@ export function VenturePage() {
     </SiteShell>
   )
 }
+
 

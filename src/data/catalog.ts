@@ -1,17 +1,16 @@
 import { offerings, type Offering, type OfferingKind } from './studio'
 
 export const HOME_GROUP_LABELS: Record<OfferingKind, string> = {
-  app: '工具',
+  app: '当前产品',
   download: '商品',
   service: '服务',
 }
 
 export interface HomeCard {
   id: string
+  kicker: string
   name: string
   solves: string
-  audience: string
-  howTo: string
   cta: string
   href: string
   external?: boolean
@@ -38,10 +37,9 @@ function offeringHref(offering: Offering): Pick<HomeCard, 'href' | 'external'> {
 function offeringToCard(offering: Offering): HomeCard {
   return {
     id: offering.id,
+    kicker: offering.kicker,
     name: offering.name,
     solves: offering.summary,
-    audience: offering.audience,
-    howTo: offering.howTo,
     cta: offering.cta,
     ...offeringHref(offering),
   }
@@ -60,4 +58,5 @@ export function getHomeGroups(): HomeGroup[] {
 
   return groups.filter((group) => group.items.length > 0)
 }
+
 
