@@ -1,154 +1,30 @@
 ---
 name: ux-writing
-description: Write effective microcopy for digital interfaces.
+description: Write or review UI copy — buttons, errors, empty states, microcopy, notifications, labels — using the voice & tone system (clear, concise, useful, human, honest) with the what→why→how error formula and inclusive-language rules. Use when the user needs interface copy, error messages, empty-state text, or a copy review.
+invocation: model
 ---
 
-# UX Writing
+# Skill: UX Writing
 
-Write clear, helpful copy that guides users through your interface.
+Produce or critique interface copy in the project's voice.
 
-## Core Principles
+## Steps
+1. Read `content/voice-tone.md` (voice principles, tone spectrum, formulas, microcopy patterns, inclusive language, pre-ship checklist).
+2. Match tone to the user's emotional state (onboarding/success/routine/error/destructive). Higher stress → plainer language.
+3. Apply the formulas:
+   - Buttons: frontload the verb, name the outcome.
+   - **Confirmation dialogs:** the confirm button **restates the action and object** — "Delete account", not "Delete"/"OK"/"Yes"/"Confirm". The title asks ("Delete account?"), the button answers in matching words. Cancel stays "Cancel". For irreversible/high-stakes actions, require a **type-to-confirm** step (WCAG 3.3.4/3.3.6).
+   - Errors: what happened → why → how to fix (no dead ends, no codes/stack traces).
+   - Empty states: value → first action.
+4. Enforce mechanics: sentence case, no ALL CAPS, numerals, no blame on the user, labels (not placeholders), no directional/color-only instructions.
+5. Run the 10-item pre-ship copy checklist.
 
-### 1. Clarity Over Cleverness
-- Use simple, familiar words
-- Avoid jargon and technical terms
-- Say what you mean directly
+## Output
+Final copy (or a redline review) that reads naturally aloud and passes the checklist. Keep within any character limits for tight UI.
 
-### 2. Be Concise
-- Cut unnecessary words
-- One idea per sentence
-- Front-load important information
-
-### 3. Be Helpful
-- Tell users what to do, not just what happened
-- Provide next steps
-- Reduce anxiety and uncertainty
-
-## Button Labels
-
-### Do
-- Use action verbs: "Save," "Send," "Create"
-- Be specific: "Add to Cart" not "Submit"
-- Match user intent: "Sign up free"
-
-### Don't
-- Generic: "OK," "Submit," "Continue"
-- Vague: "Click here," "Go"
-- Negative framing: "Don't cancel"
-
-### Examples
-| Instead of | Use |
-|------------|-----|
-| Submit | Send Message |
-| OK | Got it |
-| Continue | Next: Payment |
-| Cancel | Keep Editing |
-| Yes/No | Delete / Keep |
-
-## Error Messages
-
-### Formula
-What happened + Why + How to fix it
-
-### Examples
-❌ "Error 404"
-✅ "Page not found. Try searching or go back to the homepage."
-
-❌ "Invalid input"
-✅ "Please enter a valid email address (e.g., name@example.com)"
-
-❌ "Something went wrong"
-✅ "We couldn't save your changes. Check your connection and try again."
-
-### Guidelines
-- Be specific about the problem
-- Avoid blame ("You entered...")
-- Suggest a solution
-- Use plain language, not error codes
-
-## Empty States
-
-### What to Include
-1. What this space is for
-2. Why it's empty
-3. How to fill it
-
-### Examples
-
-**No search results**
-"No results for 'xyz'. Try different keywords or check your spelling."
-
-**Empty inbox**
-"No messages yet. When someone contacts you, you'll see it here."
-
-**First-time user**
-"Your projects will appear here. Create your first project to get started."
-
-## Loading & Progress
-
-### Short waits (< 2 seconds)
-Just show a spinner, no text needed
-
-### Medium waits (2-10 seconds)
-"Loading your dashboard..."
-"Saving changes..."
-
-### Long waits (> 10 seconds)
-"Processing your video. This usually takes 1-2 minutes."
-Show progress percentage when possible
-
-## Success Messages
-
-### Be Specific
-❌ "Success!"
-✅ "Your profile has been updated."
-
-### Confirm the Action
-"Message sent to sarah@example.com"
-"Order #12345 confirmed. Shipping in 2-3 days."
-
-### Suggest Next Steps
-"Password changed. You can now sign in with your new password."
-
-## Tooltips & Hints
-
-### When to Use
-- Explain unfamiliar UI elements
-- Provide context for actions
-- Show keyboard shortcuts
-
-### Keep Them Short
-- Under 150 characters
-- One concept per tooltip
-- No critical information (tooltips are hidden by default)
-
-## Onboarding Copy
-
-### Welcome Messages
-- Acknowledge the milestone
-- Set expectations
-- Point to first action
-
-**Example:**
-"Welcome to Acme! Let's set up your workspace in 3 quick steps."
-
-### Progressive Disclosure
-- Don't explain everything at once
-- Introduce features when relevant
-- Use inline hints over tutorials
-
-## Voice & Tone Guidelines
-
-### Voice (Consistent)
-- Friendly but professional
-- Clear and direct
-- Helpful and supportive
-
-### Tone (Varies by Context)
-| Situation | Tone |
-|-----------|------|
-| Success | Celebratory, warm |
-| Error | Calm, helpful |
-| Warning | Serious, clear |
-| Onboarding | Encouraging, patient |
-| Settings | Neutral, informative |
+## Verification (mandatory before declaring done)
+Run every line through the 10-item pre-ship checklist in `content/voice-tone.md` — do not skip it:
+- Reads naturally **aloud**; frontloaded verb on actions; no jargon/blame/dead-ends.
+- Errors follow what→why→how; empty states give value→action; no bare "No data"/"Error".
+- Mechanics: sentence case, numerals, labels (not placeholders), no color/direction-only cues, inclusive language.
+- Within character limits; translatable (no concatenation — see `accessibility/i18n-rtl.md`).
