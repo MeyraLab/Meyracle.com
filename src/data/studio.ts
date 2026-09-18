@@ -50,7 +50,7 @@ export const offerings: Offering[] = [
     status: 'live',
     kicker: '微信公众号排版工具',
     tagline: '公众号文章排版',
-    summary: '把文章贴进来，选好样式，再复制到公众号后台。',
+    summary: '把文章贴入，选好样式，再复制到公众号后台。',
     audience: '适合自己发布公众号文章的人。',
     howTo: '贴入文章，选择样式，复制到公众号后台。',
     cta: '打开 Inkpai',

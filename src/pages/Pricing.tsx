@@ -17,17 +17,16 @@ const plans = [
     ],
   },
   {
-    name: 'Inkpai Pro',
+    name: 'Inkpai Plus',
     price: 'US$13.22',
-    priceNote: '人民币参考价 ¥98',
-    billing: '一次性购买，不订阅，不自动续费',
-    description: '面向需要更多排版样式与导出能力的持续创作者。',
+    billing: '按年订阅。到期自动续费。可在当前计费周期结束前取消。',
+    description: '供需要更多版式与导出能力的创作者使用。',
     features: [
       '包含基础版全部功能',
-      '高级风格解锁并可复制',
-      '配套刊头与分节素材',
-      '全部风格长图导出',
-      '后续 Inkpai Pro 功能更新',
+      '高级版式可复制',
+      '刊头与分节素材',
+      '全部版式支持长图导出',
+      '订阅期内的 Plus 功能更新',
     ],
   },
 ]
@@ -42,7 +41,7 @@ export function Pricing() {
             产品价格与权益
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Inkpai 提供免费基础版和一次性购买的 Pro 专业版。图片书摘免费使用。
+            Inkpai 提供免费基础版，以及按年订阅的 Plus。图片书摘免费使用。
           </p>
         </header>
 
@@ -72,10 +71,7 @@ export function Pricing() {
                 <h3 className="text-xl font-medium tracking-tight text-text-primary">{plan.name}</h3>
                 <div className="mt-7">
                   <p className="text-4xl font-medium tracking-[-0.04em] text-text-primary">{plan.price}</p>
-                  {plan.priceNote ? (
-                    <p className="mt-2 text-xs text-text-muted">{plan.priceNote}</p>
-                  ) : null}
-                  <p className="mt-3 text-sm font-medium text-text-primary">{plan.billing}</p>
+                  <p className="mt-3 text-sm font-medium leading-relaxed text-text-primary">{plan.billing}</p>
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-text-secondary">{plan.description}</p>
                 <ul className="mt-7 space-y-3 border-t border-border pt-6 text-sm text-text-secondary">
@@ -95,7 +91,7 @@ export function Pricing() {
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              Inkpai Pro 为一次性数字产品。付款后绑定 Inkpai 账号激活，不会自动续费。在线购买入口将在支付服务商完成审核后开放。
+              Inkpai Plus 为按年订阅。价格以美元计价。付款成功后绑定 Inkpai 账号。到期自动续费，除非在当前周期结束前取消。在线购买将在支付服务商审核通过后开放。
             </p>
           </div>
         </section>
@@ -124,7 +120,7 @@ export function Pricing() {
 
         <section className="mt-16 border-t border-border pt-10 text-sm leading-relaxed text-text-secondary">
           <p>
-            价格以美元结算，其他币种显示可能由支付服务商换算。付款、税费与订单信息会在结账前明确展示。
+            价格以美元结算。结账前展示应付金额、税费与续费条款。
           </p>
           <p className="mt-3">
             需要协助，请联系{' '}
