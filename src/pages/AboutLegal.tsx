@@ -98,10 +98,10 @@ export function About() {
         </h1>
         <div className="mt-8 space-y-4 text-base leading-relaxed text-text-secondary">
           <p>
-            {studio.name} 是我放产品的地方。现在有 Inkpai、图片书摘，还有一个卖小工具的商店。
+            {studio.name} 是我放产品的地方。现在有 Inkpai 和图片书摘。
           </p>
           <p>
-            合作或购买：微信{' '}
+            联系我：微信{' '}
             <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>，或{' '}
             <a href={`mailto:${studio.email}`} className="font-mono text-text-primary hover:underline">
               {studio.email}
@@ -735,3 +735,4 @@ export function NotFound() {
     </SiteShell>
   )
 }
+
