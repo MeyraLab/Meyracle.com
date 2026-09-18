@@ -40,12 +40,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 {item.label}
               </NavLink>
             ))}
-            <Link
-              to="/products"
-              className="inline-flex h-9 items-center rounded-full bg-cta px-4 text-[13px] font-medium text-cta-text transition-opacity hover:opacity-80"
-            >
-              看产品
-            </Link>
           </nav>
           <button
             type="button"
@@ -76,13 +70,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   {item.label}
                 </NavLink>
               ))}
-              <Link
-                to="/products"
-                onClick={() => setOpen(false)}
-                className="mt-2 inline-flex h-10 items-center justify-center rounded-full bg-cta text-sm font-medium text-cta-text"
-              >
-                看产品
-              </Link>
             </div>
           </div>
         ) : null}
@@ -96,6 +83,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <Link to="/" className="text-sm font-semibold tracking-tight text-text-primary">
                   {studio.name}
                 </Link>
+                <p className="mt-2 text-[11px] text-text-secondary">MEYRA 做的产品。</p>
                 <p className="mt-2 text-[11px] text-text-muted">
                   © {new Date().getFullYear()} {studio.legalName}
                 </p>
@@ -209,4 +197,5 @@ export function SiteShell({ children }: { children: ReactNode }) {
     </div>
   )
 }
+
 

@@ -6,18 +6,6 @@ import { studio } from '../data/studio'
 const cardLinkClassName =
   'mt-6 inline-flex h-12 min-w-12 items-center justify-center self-start rounded-full bg-cta px-5 text-[13px] font-medium text-cta-text transition-opacity hover:opacity-80'
 
-function OfferLine({ text }: { text: string }) {
-  const body = text.slice(0, -2)
-  const tail = text.slice(-2)
-
-  return (
-    <span className="block">
-      {body}
-      <span className="whitespace-nowrap">{tail}。</span>
-    </span>
-  )
-}
-
 function HomeCardEntry({ item }: { item: HomeCard }) {
   if (item.external) {
     return (
@@ -37,21 +25,9 @@ function HomeCardEntry({ item }: { item: HomeCard }) {
 function HomeProductCard({ item }: { item: HomeCard }) {
   return (
     <article className="flex h-full flex-col rounded-[28px] bg-surface p-6 sm:p-7">
-      <h3 className="text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
-      <dl className="mt-5 flex-1 space-y-3 text-sm leading-relaxed">
-        <div>
-          <dt className="text-text-muted">做什么</dt>
-          <dd className="mt-1 text-text-secondary">{item.solves}</dd>
-        </div>
-        <div>
-          <dt className="text-text-muted">适合谁</dt>
-          <dd className="mt-1 text-text-secondary">{item.audience}</dd>
-        </div>
-        <div>
-          <dt className="text-text-muted">怎么用</dt>
-          <dd className="mt-1 text-text-secondary">{item.howTo}</dd>
-        </div>
-      </dl>
+      <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">{item.kicker}</p>
+      <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">{item.solves}</p>
       <HomeCardEntry item={item} />
     </article>
   )
@@ -59,19 +35,14 @@ function HomeProductCard({ item }: { item: HomeCard }) {
 
 export function Home() {
   const groups = getHomeGroups()
-  const offerLines = studio.description
-    .split('。')
-    .map((line) => line.trim())
-    .filter(Boolean)
 
   return (
     <SiteShell>
       <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
         <h1 className="max-w-2xl break-normal text-3xl font-medium tracking-[-0.04em] text-text-primary sm:text-4xl sm:leading-tight">
-          {offerLines.map((line) => (
-            <OfferLine key={line} text={line} />
-          ))}
+          {studio.tagline}
         </h1>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">{studio.description}</p>
       </section>
 
       {groups.map((group) => (
@@ -91,4 +62,5 @@ export function Home() {
     </SiteShell>
   )
 }
+
 
