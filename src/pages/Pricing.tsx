@@ -18,7 +18,7 @@ const plans = [
   },
   {
     name: 'Inkpai Plus',
-    price: 'US$13.22',
+    price: 'US$15.00',
     billing: '按年订阅。到期自动续费。可在当前计费周期结束前取消。',
     description: '供需要更多版式与导出能力的创作者使用。',
     features: [
