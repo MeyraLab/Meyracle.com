@@ -4,7 +4,19 @@ import { getHomeGroups, type HomeCard } from '../data/catalog'
 import { studio } from '../data/studio'
 
 const cardLinkClassName =
-  'mt-6 inline-flex h-12 min-w-[48px] items-center justify-center rounded-full bg-cta px-5 text-[13px] font-medium text-cta-text transition-opacity hover:opacity-80'
+  'mt-6 inline-flex h-12 min-w-12 items-center justify-center self-start rounded-full bg-cta px-5 text-[13px] font-medium text-cta-text transition-opacity hover:opacity-80'
+
+function OfferLine({ text }: { text: string }) {
+  const body = text.slice(0, -2)
+  const tail = text.slice(-2)
+
+  return (
+    <span className="block">
+      {body}
+      <span className="whitespace-nowrap">{tail}。</span>
+    </span>
+  )
+}
 
 function HomeCardEntry({ item }: { item: HomeCard }) {
   if (item.external) {
@@ -47,19 +59,29 @@ function HomeProductCard({ item }: { item: HomeCard }) {
 
 export function Home() {
   const groups = getHomeGroups()
+  const offerLines = studio.description
+    .split('。')
+    .map((line) => line.trim())
+    .filter(Boolean)
 
   return (
     <SiteShell>
       <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
-        <h1 className="max-w-2xl text-3xl font-medium tracking-[-0.04em] text-text-primary sm:text-4xl sm:leading-tight">
-          {studio.description}
+        <h1 className="max-w-2xl break-normal text-3xl font-medium tracking-[-0.04em] text-text-primary sm:text-4xl sm:leading-tight">
+          {offerLines.map((line) => (
+            <OfferLine key={line} text={line} />
+          ))}
         </h1>
       </section>
 
       {groups.map((group) => (
         <section key={group.id} className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
           <h2 className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">{group.label}</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={`mt-5 grid gap-4 ${
+              group.items.length >= 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : group.items.length === 2 ? 'sm:grid-cols-2' : ''
+            }`}
+          >
             {group.items.map((item) => (
               <HomeProductCard key={item.id} item={item} />
             ))}

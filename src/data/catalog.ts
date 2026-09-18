@@ -73,9 +73,11 @@ function liveOfKind(kind: OfferingKind): HomeCard[] {
 export function getHomeGroups(): HomeGroup[] {
   const goods = products.length > 0 ? products.map(productToCard) : liveOfKind('download')
 
-  return [
+  const groups: HomeGroup[] = [
     { id: 'app', label: HOME_GROUP_LABELS.app, items: liveOfKind('app') },
     { id: 'download', label: HOME_GROUP_LABELS.download, items: goods },
     { id: 'service', label: HOME_GROUP_LABELS.service, items: liveOfKind('service') },
-  ].filter((group) => group.items.length > 0)
+  ]
+
+  return groups.filter((group) => group.items.length > 0)
 }

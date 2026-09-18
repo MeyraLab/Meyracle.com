@@ -36,7 +36,7 @@ export const studio: Studio = {
   legalName: 'Meyracle',
   domain: 'meyracle.com',
   tagline: '现在能用的，都放在这里。',
-  description: '现在能打开 Inkpai 和图片书摘，商店里还有指令和模板可买。',
+  description: '现在能打开 Inkpai 和图片书摘。商店里还有指令和模板可买。',
   wechat: 'MEYRA1219',
   email: 'meyrasupport@gmail.com',
 }
