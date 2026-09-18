@@ -18,15 +18,15 @@ const plans = [
   },
   {
     name: 'Inkpai Plus',
-    price: 'US$13.22',
-    billing: '按年订阅。到期自动续费。可在当前计费周期结束前取消。',
+    price: 'US$15/年',
+    billing: '7 天免费试用。试用结束后每年自动续费，可在当前计费周期结束前取消。',
     description: '供需要更多版式与导出能力的创作者使用。',
     features: [
       '包含基础版全部功能',
-      '高级版式可复制',
-      '刊头与分节素材',
-      '全部版式支持长图导出',
-      '订阅期内的 Plus 功能更新',
+      'AI 辅助文章排版',
+      'Plus 高级排版样式与组件',
+      '图片与素材排版工具',
+      '订阅期内持续更新的会员功能',
     ],
   },
 ]
@@ -91,7 +91,7 @@ export function Pricing() {
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              Inkpai Plus 为按年订阅。价格以美元计价。付款成功后绑定 Inkpai 账号。到期自动续费，除非在当前周期结束前取消。在线购买将在支付服务商审核通过后开放。
+              Inkpai Plus 可免费试用 7 天。试用结束后按 US$15/年自动续费，除非在当前计费周期结束前取消。在线购买将在支付服务商审核通过后开放。
             </p>
           </div>
         </section>
