@@ -5,6 +5,7 @@ import './index.css'
 import { Home } from './pages/Home'
 import { About, NotFound, Privacy, Terms } from './pages/AboutLegal'
 import { ProductsIndex, VenturePage } from './pages/Ventures'
+import { Pricing } from './pages/Pricing'
 import { applyTheme, getInitialTheme } from './theme'
 
 applyTheme(getInitialTheme())
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/products" element={<ProductsIndex />} />
         <Route path="/products/vibe-coding" element={<Navigate to="/" replace />} />
         <Route path="/products/:slug" element={<VenturePage />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/store" element={<Navigate to="/" replace />} />
         <Route path="/product/:id" element={<Navigate to="/" replace />} />
         <Route path="/about" element={<About />} />
@@ -29,4 +31,5 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
 

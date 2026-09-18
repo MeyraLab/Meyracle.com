@@ -72,6 +72,14 @@ export function VenturePage() {
           >
             {item.cta}
           </a>
+          {item.pricingPath ? (
+            <Link
+              to={item.pricingPath}
+              className="inline-flex h-12 items-center rounded-full border border-border px-6 text-sm text-text-primary transition-colors hover:border-border-strong"
+            >
+              查看价格与权益
+            </Link>
+          ) : null}
           {item.repoUrl ? (
             <a
               href={item.repoUrl}

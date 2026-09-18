@@ -5,6 +5,7 @@ import { applyTheme, saveTheme, type Theme } from '../theme'
 
 const nav = [
   { to: '/products', label: '产品' },
+  { to: '/pricing', label: '定价' },
   { to: '/about', label: '关于' },
 ]
 
@@ -154,6 +155,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   <li>
                     <Link to="/products" className="transition-colors hover:text-text-primary">
                       产品
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/pricing" className="transition-colors hover:text-text-primary">
+                      定价
                     </Link>
                   </li>
                   <li>

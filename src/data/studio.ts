@@ -27,6 +27,7 @@ export interface Offering {
   cta: string
   /** Where the product currently runs. Hub pages describe; they do not swallow the app. */
   appUrl?: string
+  pricingPath?: string
   repoUrl?: string
 }
 
@@ -54,6 +55,7 @@ export const offerings: Offering[] = [
     howTo: '贴入文章，选择样式，复制到公众号后台。',
     cta: '打开 Inkpai',
     appUrl: 'https://inkpai.meyracle.com',
+    pricingPath: '/pricing',
     repoUrl: 'https://github.com/MeyraLab/inkpai',
   },
   {
