@@ -5,7 +5,6 @@ import { applyTheme, saveTheme, type Theme } from '../theme'
 
 const nav = [
   { to: '/products', label: '产品' },
-  { to: '/store', label: '商店' },
   { to: '/about', label: '关于' },
 ]
 
@@ -141,7 +140,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
             <nav
               aria-label="页尾导航"
-              className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-4 lg:py-12 lg:pl-16"
+              className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:py-12 lg:pl-16"
             >
               <div>
                 <p className="text-[11px] font-medium text-text-primary">产品</p>
@@ -153,32 +152,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                       </Link>
                     </li>
                   ))}
-                </ul>
-              </div>
-
-              <div>
-                <p className="text-[11px] font-medium text-text-primary">商店</p>
-                <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
-                  <li>
-                    <Link to="/store" className="transition-colors hover:text-text-primary">
-                      全部工具
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/product/vibe-prompt-kit" className="transition-colors hover:text-text-primary">
-                      Prompt Kit
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/product/code-flow" className="transition-colors hover:text-text-primary">
-                      Code Flow
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/product/ai-cheatsheet" className="transition-colors hover:text-text-primary">
-                      编程速查
-                    </Link>
-                  </li>
                 </ul>
               </div>
 
@@ -236,3 +209,4 @@ export function SiteShell({ children }: { children: ReactNode }) {
     </div>
   )
 }
+

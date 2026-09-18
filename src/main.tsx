@@ -2,9 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 import './index.css'
-import App from './App.tsx'
 import { Home } from './pages/Home'
-import { ProductDetail } from './pages/ProductDetail'
 import { About, NotFound, Privacy, Terms } from './pages/AboutLegal'
 import { ProductsIndex, VenturePage } from './pages/Ventures'
 import { applyTheme, getInitialTheme } from './theme'
@@ -17,9 +15,10 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsIndex />} />
+        <Route path="/products/vibe-coding" element={<Navigate to="/" replace />} />
         <Route path="/products/:slug" element={<VenturePage />} />
-        <Route path="/store" element={<App />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/store" element={<Navigate to="/" replace />} />
+        <Route path="/product/:id" element={<Navigate to="/" replace />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
@@ -30,3 +29,4 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+

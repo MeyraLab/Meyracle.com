@@ -8,10 +8,10 @@ export function ProductsIndex() {
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">产品</p>
         <h1 className="mt-4 max-w-2xl text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-          现在能打开的三样。
+          现在能用的。
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-          Inkpai、图片书摘、Vibe Coding 商店。之后有新的也会放在这里。
+          Inkpai 排公众号文章。图片书摘把一段文字做成图。
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {offerings.map((item) => (
@@ -51,7 +51,7 @@ export function VenturePage() {
     )
   }
 
-  const primaryHref = item.appUrl ?? item.storePath ?? '/products'
+  const primaryHref = item.appUrl ?? '/products'
 
   return (
     <SiteShell>
@@ -87,3 +87,4 @@ export function VenturePage() {
     </SiteShell>
   )
 }
+

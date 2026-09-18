@@ -40,15 +40,15 @@ function HomeProductCard({ item }: { item: HomeCard }) {
       <h3 className="text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
       <dl className="mt-5 flex-1 space-y-3 text-sm leading-relaxed">
         <div>
-          <dt className="text-text-muted">解决</dt>
+          <dt className="text-text-muted">做什么</dt>
           <dd className="mt-1 text-text-secondary">{item.solves}</dd>
         </div>
         <div>
-          <dt className="text-text-muted">给谁</dt>
+          <dt className="text-text-muted">适合谁</dt>
           <dd className="mt-1 text-text-secondary">{item.audience}</dd>
         </div>
         <div>
-          <dt className="text-text-muted">用法</dt>
+          <dt className="text-text-muted">怎么用</dt>
           <dd className="mt-1 text-text-secondary">{item.howTo}</dd>
         </div>
       </dl>
@@ -91,3 +91,4 @@ export function Home() {
     </SiteShell>
   )
 }
+

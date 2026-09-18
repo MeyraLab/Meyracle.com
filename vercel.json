@@ -21,6 +21,9 @@
     }
   ],
   "redirects": [
+    { "source": "/store", "destination": "/", "permanent": true },
+    { "source": "/product/:id", "destination": "/", "permanent": true },
+    { "source": "/products/vibe-coding", "destination": "/", "permanent": true },
     { "source": "/legal/privacy", "destination": "/privacy", "permanent": true },
     { "source": "/legal/terms", "destination": "/terms", "permanent": true }
   ],
@@ -28,3 +31,4 @@
     { "source": "/((?!assets/|products/|favicon.svg|robots.txt|sitemap.xml|.well-known/).*)", "destination": "/index.html" }
   ]
 }
+
