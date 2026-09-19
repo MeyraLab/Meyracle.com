@@ -15,6 +15,9 @@ const plans = [
       '一键复制到公众号',
       '本地草稿自动保存',
     ],
+    action: '使用基础版',
+    href: 'https://inkpai.meyracle.com',
+    featured: false,
   },
   {
     name: 'Inkpai Plus',
@@ -28,6 +31,9 @@ const plans = [
       '图片与素材排版工具',
       '订阅期内持续更新的会员功能',
     ],
+    action: '开始 7 天免费试用',
+    href: 'https://inkpai.meyracle.com/pricing?checkout=plus',
+    featured: true,
   },
 ]
 
@@ -84,6 +90,18 @@ export function Pricing() {
                     </li>
                   ))}
                 </ul>
+                <a
+                  href={plan.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-8 inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-opacity hover:opacity-80 ${
+                    plan.featured
+                      ? 'bg-cta text-cta-text'
+                      : 'border border-border text-text-primary'
+                  }`}
+                >
+                  {plan.action}
+                </a>
               </article>
             ))}
           </div>
@@ -91,7 +109,7 @@ export function Pricing() {
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              Inkpai Plus 可免费试用 7 天。试用结束后按 US$15.00/年自动续费，除非在当前计费周期结束前取消。在线购买将在支付服务商审核通过后开放。
+              点击“开始 7 天免费试用”后，登录或注册 Inkpai 账号并进入 Waffo 结账页。订阅与当前账号绑定。试用结束后按 US$15.00/年自动续费，除非在试用结束或下一次续费前取消。
             </p>
           </div>
         </section>
