@@ -47,7 +47,7 @@ export function useDemoPlayback({ stepCount, rootRef }: UseDemoPlaybackOptions) 
       ([entry]) => {
         setInView(entry.isIntersecting)
       },
-      { threshold: 0.2 },
+      { threshold: 0, rootMargin: '0px' },
     )
 
     observer.observe(el)
