@@ -40,24 +40,28 @@ const plans = [
 export function Pricing() {
   return (
     <SiteShell>
-      <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <header className="max-w-2xl">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">定价</p>
-          <h1 className="mt-4 text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-            产品价格与权益
-          </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Inkpai 提供免费基础版，以及按年订阅的 Plus。图片书摘免费使用。
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <header className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
+          <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-text-muted">
+            定价 / Pricing
           </p>
+          <div>
+            <h1 className="text-balance max-w-3xl text-5xl font-medium leading-none tracking-[-0.05em] text-text-primary sm:text-6xl">
+              产品价格与权益
+            </h1>
+            <p className="text-pretty mt-6 max-w-xl text-base leading-7 text-text-secondary">
+              Inkpai 提供免费基础版，以及按年订阅的 Plus。图片书摘免费使用。
+            </p>
+          </div>
         </header>
 
-        <section aria-labelledby="inkpai-pricing" className="mt-14">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+        <section aria-labelledby="inkpai-pricing" className="mt-20">
+          <div className="fine-rule flex flex-wrap items-end justify-between gap-4 border-t pt-5">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-text-muted">
                 微信公众号排版工具
               </p>
-              <h2 id="inkpai-pricing" className="mt-3 text-2xl font-medium tracking-[-0.03em] text-text-primary">
+              <h2 id="inkpai-pricing" className="mt-4 text-3xl font-medium tracking-[-0.04em] text-text-primary">
                 Inkpai
               </h2>
             </div>
@@ -65,25 +69,41 @@ export function Pricing() {
               href="https://inkpai.meyracle.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+              className="inline-flex min-h-11 items-center text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
               打开 Inkpai →
             </a>
           </div>
 
-          <div className="mt-6 grid gap-4 lg:grid-cols-2">
-            {plans.map((plan) => (
-              <article key={plan.name} className="flex h-full flex-col rounded-[28px] bg-surface p-6 sm:p-8">
-                <h3 className="text-xl font-medium tracking-tight text-text-primary">{plan.name}</h3>
-                <div className="mt-7">
-                  <p className="text-4xl font-medium tracking-[-0.04em] text-text-primary">{plan.price}</p>
-                  <p className="mt-3 text-sm font-medium leading-relaxed text-text-primary">{plan.billing}</p>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {plans.map((plan, index) => (
+              <article
+                key={plan.name}
+                className={`flex min-h-[34rem] flex-col rounded-2xl p-7 sm:p-9 ${
+                  plan.featured ? 'plan-featured' : 'bg-surface text-text-primary'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-xl font-medium tracking-[-0.02em]">{plan.name}</h3>
+                  <span className={`plan-soft font-mono text-[10px] ${plan.featured ? '' : 'text-text-muted'}`}>
+                    0{index + 1}
+                  </span>
                 </div>
-                <p className="mt-5 text-sm leading-relaxed text-text-secondary">{plan.description}</p>
-                <ul className="mt-7 space-y-3 border-t border-border pt-6 text-sm text-text-secondary">
+                <div className="mt-12 min-h-40">
+                  <p className="font-mono text-4xl font-medium tracking-[-0.05em] sm:text-5xl">{plan.price}</p>
+                  <p className={`plan-muted mt-5 max-w-lg text-sm font-medium leading-6 ${plan.featured ? '' : 'text-text-primary'}`}>
+                    {plan.billing}
+                  </p>
+                  <p className={`plan-muted mt-5 text-sm leading-6 ${plan.featured ? '' : 'text-text-secondary'}`}>
+                    {plan.description}
+                  </p>
+                </div>
+                <ul className={`plan-list mt-8 space-y-3 border-t pt-7 text-sm ${
+                  plan.featured ? '' : 'border-border text-text-secondary'
+                }`}>
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-3">
-                      <span aria-hidden="true" className="text-text-primary">
+                      <span aria-hidden="true" className={plan.featured ? 'text-signal' : 'text-text-primary'}>
                         ✓
                       </span>
                       <span>{feature}</span>
@@ -94,10 +114,10 @@ export function Pricing() {
                   href={plan.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-8 inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-opacity hover:opacity-80 ${
+                  className={`plan-cta mt-auto inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition duration-200 hover:-translate-y-0.5 hover:opacity-85 active:translate-y-0 ${
                     plan.featured
-                      ? 'bg-cta text-cta-text'
-                      : 'border border-border text-text-primary'
+                      ? ''
+                      : 'border border-border text-text-primary hover:border-border-strong hover:bg-canvas'
                   }`}
                 >
                   {plan.action}
@@ -106,37 +126,42 @@ export function Pricing() {
             ))}
           </div>
 
-          <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
+          <div className="fine-rule mt-4 grid gap-5 rounded-2xl border p-6 sm:grid-cols-[0.45fr_1.55fr] sm:p-8">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
+            <p className="max-w-3xl text-sm leading-7 text-text-secondary">
               点击“开始 7 天免费试用”后，登录或注册 Inkpai 账号并进入 Waffo 结账页。订阅与当前账号绑定。试用结束后按 US$15.00/年自动续费，除非在试用结束或下一次续费前取消。
             </p>
           </div>
         </section>
 
-        <section aria-labelledby="imageexcerpt-pricing" className="mt-16 border-t border-border pt-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">文字成图工具</p>
-          <h2 id="imageexcerpt-pricing" className="mt-3 text-2xl font-medium tracking-[-0.03em] text-text-primary">
+        <section aria-labelledby="imageexcerpt-pricing" className="fine-rule mt-24 border-t pt-5">
+          <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-text-muted">文字成图工具</p>
+          <h2 id="imageexcerpt-pricing" className="mt-4 text-3xl font-medium tracking-[-0.04em] text-text-primary">
             图片书摘
           </h2>
-          <div className="mt-6 rounded-[24px] bg-surface p-6 sm:p-8">
-            <p className="text-3xl font-medium tracking-[-0.04em] text-text-primary">免费</p>
-            <p className="mt-3 text-sm font-medium text-text-primary">无需付款，没有订阅</p>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
-              输入文字，选择样式并保存图片。当前全部功能免费使用。
-            </p>
-            <a
-              href="https://bk.meyracle.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex h-12 items-center rounded-full bg-cta px-6 text-sm font-medium text-cta-text transition-opacity hover:opacity-80"
-            >
-              打开图片书摘
-            </a>
+          <div className="mt-8 grid overflow-hidden rounded-2xl bg-surface sm:grid-cols-[0.7fr_1.3fr]">
+            <div className="document-grid flex min-h-64 items-end p-7 sm:p-9">
+              <p className="font-serif text-5xl leading-none text-signal">“</p>
+            </div>
+            <div className="p-7 sm:p-9">
+              <p className="font-mono text-4xl font-medium tracking-[-0.05em] text-text-primary">免费</p>
+              <p className="mt-4 text-sm font-medium text-text-primary">无需付款，没有订阅</p>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-text-secondary">
+                输入文字，选择样式并保存图片。当前全部功能免费使用。
+              </p>
+              <a
+                href="https://bk.meyracle.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex h-12 items-center rounded-full bg-cta px-6 text-sm font-medium text-cta-text transition duration-200 hover:-translate-y-0.5 hover:opacity-85 active:translate-y-0"
+              >
+                打开图片书摘
+              </a>
+            </div>
           </div>
         </section>
 
-        <section className="mt-16 border-t border-border pt-10 text-sm leading-relaxed text-text-secondary">
+        <section className="fine-rule mt-24 border-t pt-8 text-sm leading-7 text-text-secondary">
           <p>
             价格以美元结算。结账前展示应付金额、税费与续费条款。
           </p>
