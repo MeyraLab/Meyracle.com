@@ -15,6 +15,11 @@ export interface ChatMessage {
   text: string
 }
 
+export interface DemoMacWindow {
+  title: string
+  status?: string
+}
+
 export interface ChatDemoScript {
   kind: 'chat'
   assistantLabel: string

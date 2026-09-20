@@ -97,6 +97,122 @@
   mask-image: none;
 }
 
+.demo-stage--windowed {
+  min-height: 18rem;
+  padding: 0.95rem 0.95rem 0.15rem;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.demo-stage--windowed .demo-stage__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mac-demo-window {
+  --mac-chat-user-bg: #ffe5d9;
+  --mac-chat-user-fg: var(--color-ink);
+  --mac-chat-assistant-bg: rgb(255 255 255 / 0.09);
+  --mac-chat-assistant-fg: #f5f5f0;
+  --mac-title: rgb(255 255 255 / 0.58);
+  --mac-status: rgb(255 255 255 / 0.34);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 1.05rem;
+  background: var(--color-ink);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.18),
+    0 10px 24px rgb(0 0 0 / 0.1);
+}
+
+html[data-theme='dark'] .mac-demo-window {
+  background: var(--color-canvas);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 10px 24px rgb(0 0 0 / 0.28);
+}
+
+.mac-demo-window__titlebar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.55rem;
+  height: 2.05rem;
+  padding: 0 0.7rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.mac-demo-window__lights {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.mac-demo-window__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+}
+
+.mac-demo-window__dot--close {
+  background: #ff5f57;
+}
+
+.mac-demo-window__dot--min {
+  background: #febc2e;
+}
+
+.mac-demo-window__dot--max {
+  background: #28c840;
+}
+
+.mac-demo-window__title {
+  min-width: 0;
+  flex: 1 1 auto;
+  margin: 0;
+  overflow: hidden;
+  color: var(--mac-title);
+  font-size: 0.6875rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mac-demo-window__status {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--mac-status);
+  font-size: 0.625rem;
+  letter-spacing: 0.01em;
+}
+
+.mac-demo-window__body {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.mac-demo-window .chat-demo__stack {
+  right: 0.8rem;
+  bottom: 0.7rem;
+  left: 0.8rem;
+}
+
+.mac-demo-window .chat-demo__bubble--user {
+  background: var(--mac-chat-user-bg);
+  color: var(--mac-chat-user-fg);
+}
+
+.mac-demo-window .chat-demo__bubble--assistant {
+  border-color: rgb(255 255 255 / 0.1);
+  background: var(--mac-chat-assistant-bg);
+  color: var(--mac-chat-assistant-fg);
+}
+
 .excerpt-demo {
   position: absolute;
   inset: 0;
