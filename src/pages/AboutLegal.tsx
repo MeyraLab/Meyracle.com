@@ -27,20 +27,22 @@ function LegalPage({
 }) {
   return (
     <SiteShell>
-      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <article>
-          <header className="border-b border-border pb-10 sm:pb-12">
-            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+          <header className="fine-rule grid gap-8 border-b pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
+            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-text-muted">
               {eyebrow}
             </p>
-            <h1 className="mt-4 text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-              {title}
-            </h1>
-            <p className="mt-4 text-sm text-text-muted">
-              最后更新：<time dateTime="2026-09-17">2026 年 9 月 17 日</time>
-            </p>
+            <div>
+              <h1 className="text-balance max-w-4xl text-5xl font-medium leading-none tracking-[-0.05em] text-text-primary sm:text-6xl">
+                {title}
+              </h1>
+              <p className="mt-6 font-mono text-[11px] text-text-muted">
+                最后更新：<time dateTime="2026-09-17">2026 年 9 月 17 日</time>
+              </p>
+            </div>
           </header>
-          <div className="mt-10 space-y-10 text-[15px] leading-7 text-text-secondary sm:mt-12 sm:space-y-12 sm:text-base sm:leading-8">
+          <div className="mt-12 max-w-3xl space-y-12 text-[15px] leading-7 text-text-secondary sm:mt-16 sm:space-y-16 sm:text-base sm:leading-8 lg:ml-[32.5%]">
             {children}
           </div>
         </article>
@@ -57,8 +59,8 @@ function LegalSection({
   children: ReactNode
 }) {
   return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-medium tracking-[-0.02em] text-text-primary sm:text-2xl">
+    <section className="fine-rule space-y-5 border-t pt-8 sm:pt-10">
+      <h2 className="text-xl font-medium tracking-[-0.03em] text-text-primary sm:text-2xl">
         {title}
       </h2>
       {children}
@@ -74,15 +76,15 @@ function LegalSubsection({
   children: ReactNode
 }) {
   return (
-    <div className="space-y-3">
-      <h3 className="text-base font-medium text-text-primary sm:text-lg">{title}</h3>
+    <div className="fine-rule space-y-3 border-l pl-5">
+      <h3 className="text-base font-medium tracking-[-0.01em] text-text-primary sm:text-lg">{title}</h3>
       {children}
     </div>
   )
 }
 
 function LegalList({ children }: { children: ReactNode }) {
-  return <ul className="list-disc space-y-2 pl-5 marker:text-text-muted">{children}</ul>
+  return <ul className="list-disc space-y-2 pl-5 marker:text-signal">{children}</ul>
 }
 
 function ContactEmail() {
@@ -92,30 +94,40 @@ function ContactEmail() {
 export function About() {
   return (
     <SiteShell>
-      <main className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24">
-        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">关于</p>
-        <h1 className="mt-4 text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-          关于 Meyracle
-        </h1>
-        <div className="mt-8 space-y-8 text-base leading-relaxed text-text-secondary">
-          <p>
-            Meyracle 是由 MEYRA 独立开发和运营的产品品牌。目前包括 Inkpai 与图片书摘。
-          </p>
-          <section className="space-y-3">
-            <h2 className="text-xl font-medium tracking-[-0.02em] text-text-primary">MEYRA</h2>
-            <p>负责产品、设计与开发。新的产品完成后，也会收录在 Meyracle。</p>
-          </section>
-          <section className="space-y-3">
-            <h2 className="text-xl font-medium tracking-[-0.02em] text-text-primary">联系方式</h2>
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <header className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
+          <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-text-muted">关于 / About</p>
+          <h1 className="text-balance max-w-3xl text-5xl font-medium leading-none tracking-[-0.05em] text-text-primary sm:text-6xl">
+            关于 Meyracle
+          </h1>
+        </header>
+        <div className="mt-16 grid overflow-hidden rounded-2xl bg-surface lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="ambient-hero min-h-80 p-7 sm:p-10">
+            <div className="flex h-full min-h-64 flex-col justify-between border border-white/20 p-5 text-white sm:p-7">
+              <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-white/65">Independent studio</span>
+              <span className="text-5xl font-medium tracking-[-0.05em]">MEYRA</span>
+            </div>
+          </div>
+          <div className="space-y-10 p-7 text-base leading-8 text-text-secondary sm:p-10 lg:p-14">
             <p>
-              微信 <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>
-              <br />
-              邮箱{' '}
-              <a href={`mailto:${studio.email}`} className="font-mono text-text-primary hover:underline">
-                {studio.email}
-              </a>
+              Meyracle 是由 MEYRA 独立开发和运营的产品品牌。目前包括 Inkpai 与图片书摘。
             </p>
-          </section>
+            <section className="fine-rule border-t pt-7">
+              <h2 className="text-xl font-medium tracking-[-0.03em] text-text-primary">MEYRA</h2>
+              <p className="mt-3">负责产品、设计与开发。新的产品完成后，也会收录在 Meyracle。</p>
+            </section>
+            <section className="fine-rule border-t pt-7">
+              <h2 className="text-xl font-medium tracking-[-0.03em] text-text-primary">联系方式</h2>
+              <p className="mt-3">
+                微信 <span className="font-mono font-medium text-text-primary">{studio.wechat}</span>
+                <br />
+                邮箱{' '}
+                <a href={`mailto:${studio.email}`} className="font-mono text-text-primary underline decoration-border-strong underline-offset-4 hover:decoration-text-primary">
+                  {studio.email}
+                </a>
+              </p>
+            </section>
+          </div>
         </div>
       </main>
     </SiteShell>
@@ -737,9 +749,10 @@ export function Privacy() {
 export function NotFound() {
   return (
     <SiteShell>
-      <main className="mx-auto max-w-2xl px-4 py-24 text-center">
-        <h1 className="text-3xl font-medium tracking-[-0.04em] text-text-primary">页面不存在</h1>
-        <Link to="/" className="mt-5 inline-block text-sm text-text-secondary hover:text-text-primary">
+      <main className="mx-auto flex min-h-[65dvh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
+        <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-signal">404</p>
+        <h1 className="mt-6 text-5xl font-medium tracking-[-0.05em] text-text-primary sm:text-6xl">页面不存在</h1>
+        <Link to="/" className="mt-8 inline-flex h-12 w-fit items-center rounded-full bg-cta px-6 text-sm font-medium text-cta-text transition-opacity hover:opacity-85">
           返回首页
         </Link>
       </main>

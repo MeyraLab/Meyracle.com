@@ -2,53 +2,57 @@
 
 @theme {
   --color-canvas: #ffffff;
-  --color-surface: #f5f5f0;
-  --color-surface-elevated: #fff9f5;
-  --color-peach: #ffe5d9;
-  --color-ink: #1e1e1e;
+  --color-surface: #f9f8f6;
+  --color-surface-elevated: #efeeed;
+  --color-peach: #ffe3d6;
+  --color-ink: #0a0a0a;
 
-  --color-border: #e5e5e5;
-  --color-border-strong: #cccccc;
+  --color-border: #e4e2de;
+  --color-border-strong: #aaa7a1;
 
-  --color-text-primary: #111111;
-  --color-text-secondary: #5c5c5c;
-  --color-text-muted: #8a8a8a;
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #5f6267;
+  --color-text-muted: #777a7f;
 
-  --color-accent: #111111;
-  --color-accent-hover: #333333;
-  --color-accent-soft: #f5f5f0;
+  --color-accent: #0a0a0a;
+  --color-accent-hover: #252525;
+  --color-accent-soft: #f1f0ed;
+  --color-signal: #e9532f;
+  --color-signal-soft: #ffe3d6;
 
-  --color-cta: #111111;
+  --color-cta: #0a0a0a;
   --color-cta-text: #ffffff;
 
   --color-success: #2f6f4e;
 
-  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-sans: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
   --font-serif: "Newsreader", "Songti SC", "Noto Serif SC", Georgia, serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  --font-mono: "Geist Mono", "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
 }
 
 html[data-theme="dark"] {
   color-scheme: dark;
 
-  --color-canvas: #0a0a0a;
-  --color-surface: #151515;
-  --color-surface-elevated: #1c1c1c;
-  --color-peach: #261f1b;
+  --color-canvas: #0f0f10;
+  --color-surface: #1d1d1e;
+  --color-surface-elevated: #29292a;
+  --color-peach: #3a1d16;
 
-  --color-border: #292929;
-  --color-border-strong: #404040;
+  --color-border: #353536;
+  --color-border-strong: #5a5a5c;
 
   --color-text-primary: #f5f5f5;
-  --color-text-secondary: #a8a8a8;
-  --color-text-muted: #737373;
+  --color-text-secondary: #b1b1b3;
+  --color-text-muted: #929295;
 
   --color-accent: #f5f5f5;
   --color-accent-hover: #ffffff;
-  --color-accent-soft: #1c1c1c;
+  --color-accent-soft: #29292a;
+  --color-signal: #ff7857;
+  --color-signal-soft: #3a1d16;
 
   --color-cta: #f5f5f5;
-  --color-cta-text: #111111;
+  --color-cta-text: #0a0a0a;
 
   --color-success: #73ad8d;
 }
@@ -56,7 +60,7 @@ html[data-theme="dark"] {
 html {
   color-scheme: light;
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -68,13 +72,93 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   transition:
     background-color 180ms ease,
     color 180ms ease;
 }
 
 ::selection {
-  background: var(--color-text-primary);
-  color: var(--color-canvas);
+  background: var(--color-signal);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 3px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.ambient-hero {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.ambient-hero::before {
+  background:
+    radial-gradient(circle at 68% 42%, color-mix(in srgb, var(--color-signal) 78%, transparent) 0, transparent 31%),
+    radial-gradient(circle at 43% 68%, color-mix(in srgb, var(--color-signal-soft) 88%, transparent) 0, transparent 35%),
+    linear-gradient(150deg, var(--color-surface) 0%, var(--color-peach) 100%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -2;
+}
+
+.ambient-hero::after {
+  background-image: linear-gradient(120deg, transparent 40%, rgb(255 255 255 / 10%) 49%, transparent 58%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.document-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-text-primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-text-primary) 8%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.fine-rule {
+  border-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+}
+
+.surface-shadow {
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 4%),
+    0 18px 40px -24px rgb(15 23 42 / 18%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
