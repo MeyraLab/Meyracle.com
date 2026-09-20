@@ -17,7 +17,7 @@ export const imageexcerptFolder: FolderDemoScript = {
     },
     {
       id: 3,
-      quote: 'The essence of fear is this:\npeople do not look at it.\nBut if you look directly at it, you disappear.',
+      quote: 'The essence of fear is this:\npeople do not look at it.\nBut if you look directly at it,\nyou disappear.',
       attribution: 'Elon Musk',
     },
   ],

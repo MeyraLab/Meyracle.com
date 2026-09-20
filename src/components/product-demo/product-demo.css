@@ -227,7 +227,7 @@ html[data-theme='dark'] .mac-demo-window {
 }
 
 .demo-stage--folder {
-  min-height: 20.5rem;
+  min-height: 22rem;
   -webkit-mask-image: none;
   mask-image: none;
 }
@@ -238,12 +238,25 @@ html[data-theme='dark'] .mac-demo-window {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.9rem 0.7rem 0.35rem;
+  padding: 1.35rem 0.7rem 0.4rem;
 }
 
 .folder-demo--single {
   align-items: flex-end;
   padding: 1.55rem 0.7rem 0.45rem;
+}
+
+.folder-slip {
+  position: absolute;
+  z-index: 1;
+}
+
+.folder-flap {
+  z-index: 4;
+}
+
+.folder-slip--lifted {
+  z-index: 5;
 }
 
 .folder-card {
@@ -301,7 +314,7 @@ html[data-theme='dark'] .mac-demo-window {
 
 @media (max-width: 639px) {
   .demo-stage--folder {
-    min-height: 21.5rem;
+    min-height: 22.5rem;
   }
 }
 

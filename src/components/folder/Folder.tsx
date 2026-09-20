@@ -112,13 +112,13 @@ const OPEN_POSES: Record<SlotId, CardPose> = {
 const CONTAINED_OPEN_POSES: Record<SlotId, CardPose> = {
   1: { y: -28, x: 34, rotate: 11, z: 0 },
   2: { y: -36, x: 8, rotate: 3, z: 0 },
-  3: { y: -128, x: -2, rotate: -3, z: 72 },
+  3: { y: -142, x: 0, rotate: -2, z: 0 },
 }
 
 const SINGLE_POSES: Record<FolderPhase, CardPose> = {
-  idle: { y: -86, x: 0, rotate: -2, z: 56 },
-  hover: { y: -100, x: 0, rotate: -2, z: 64 },
-  open: { y: -118, x: 0, rotate: -2, z: 72 },
+  idle: { y: -96, x: 0, rotate: -2, z: 0 },
+  hover: { y: -110, x: 0, rotate: -2, z: 0 },
+  open: { y: -132, x: 0, rotate: -2, z: 0 },
 }
 
 function cardPose(id: SlotId, phase: FolderPhase, contained: boolean): CardPose {
@@ -261,7 +261,7 @@ function FolderComponent({
             height: BASE_HEIGHT,
             transform: `translate(-50%, -50%) scale(${scale})`,
             perspective: 800 * scale,
-            transformStyle: 'preserve-3d',
+            isolation: 'isolate',
           }}
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 0 }}>
@@ -276,54 +276,11 @@ function FolderComponent({
             />
           </div>
 
-          {single ? (
-            <div
-              className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-              style={{ zIndex: LIFTED_Z }}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={activeSlip?.id ?? 'empty'}
-                  className="absolute"
-                  initial={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y + 16 } : false}
-                  animate={{ opacity: 1, ...SINGLE_POSES[currentPhase] }}
-                  exit={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y - 12 } : undefined}
-                  transition={animate ? { duration: 0.38, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
-                >
-                  <Card
-                    id={FRONT_SLOT}
-                    theme={theme}
-                    uid={reactId}
-                    slip={activeSlip}
-                    lifted
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          ) : (
-            stackItems.map(({ slot, slip }) => {
-              const pose = cardPose(slot, currentPhase, contained)
-              const lifted = currentPhase === 'open' && slot === FRONT_SLOT
-              return (
-                <div
-                  key={slip?.id ?? slot}
-                  className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-                  style={{ zIndex: lifted ? LIFTED_Z : slot }}
-                >
-                  <motion.div className="absolute" animate={pose} transition={spring(slot)}>
-                    <Card id={slot} theme={theme} uid={`${reactId}-${slip?.id ?? slot}`} slip={slip} lifted={lifted} />
-                  </motion.div>
-                </div>
-              )
-            })
-          )}
-
           <motion.div
-            className="absolute top-1/2 left-1/2 mt-4 -translate-x-1/2 -translate-y-1/2"
+            className="folder-flap absolute top-1/2 left-1/2 mt-4 -translate-x-1/2 -translate-y-1/2"
             style={{
               zIndex: FLAP_Z,
               transformOrigin: 'bottom center',
-              transformStyle: 'preserve-3d',
               width: 321,
               height: 241,
             }}
@@ -385,6 +342,51 @@ function FolderComponent({
               </defs>
             </svg>
           </motion.div>
+
+          {single ? (
+            <div
+              className="folder-slip folder-slip--lifted absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+              style={{ zIndex: LIFTED_Z }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={activeSlip?.id ?? 'empty'}
+                  className="absolute"
+                  initial={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y + 16 } : false}
+                  animate={{ opacity: 1, ...SINGLE_POSES[currentPhase] }}
+                  exit={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y - 12 } : undefined}
+                  transition={animate ? { duration: 0.38, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
+                >
+                  <Card id={FRONT_SLOT} theme={theme} uid={reactId} slip={activeSlip} lifted />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          ) : (
+            stackItems.map(({ slot, slip }) => {
+              const pose = cardPose(slot, currentPhase, contained)
+              const lifted = currentPhase === 'open' && slot === FRONT_SLOT
+              return (
+                <div
+                  key={slip?.id ?? slot}
+                  className={cn(
+                    'folder-slip absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center',
+                    lifted && 'folder-slip--lifted',
+                  )}
+                  style={{ zIndex: lifted ? LIFTED_Z : slot }}
+                >
+                  <motion.div className="absolute" animate={pose} transition={spring(slot)}>
+                    <Card
+                      id={slot}
+                      theme={theme}
+                      uid={`${reactId}-${slip?.id ?? slot}`}
+                      slip={slip}
+                      lifted={lifted}
+                    />
+                  </motion.div>
+                </div>
+              )
+            })
+          )}
         </div>
       </div>
     </div>
