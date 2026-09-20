@@ -80,26 +80,26 @@ export function Pricing() {
               <article
                 key={plan.name}
                 className={`flex min-h-[34rem] flex-col rounded-2xl p-7 sm:p-9 ${
-                  plan.featured ? 'bg-ink text-white' : 'bg-surface text-text-primary'
+                  plan.featured ? 'plan-featured' : 'bg-surface text-text-primary'
                 }`}
               >
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-xl font-medium tracking-[-0.02em]">{plan.name}</h3>
-                  <span className={`font-mono text-[10px] ${plan.featured ? 'text-white/45' : 'text-text-muted'}`}>
+                  <span className={`plan-soft font-mono text-[10px] ${plan.featured ? '' : 'text-text-muted'}`}>
                     0{index + 1}
                   </span>
                 </div>
                 <div className="mt-12 min-h-40">
                   <p className="font-mono text-4xl font-medium tracking-[-0.05em] sm:text-5xl">{plan.price}</p>
-                  <p className={`mt-5 max-w-lg text-sm font-medium leading-6 ${plan.featured ? 'text-white/85' : 'text-text-primary'}`}>
+                  <p className={`plan-muted mt-5 max-w-lg text-sm font-medium leading-6 ${plan.featured ? '' : 'text-text-primary'}`}>
                     {plan.billing}
                   </p>
-                  <p className={`mt-5 text-sm leading-6 ${plan.featured ? 'text-white/60' : 'text-text-secondary'}`}>
+                  <p className={`plan-muted mt-5 text-sm leading-6 ${plan.featured ? '' : 'text-text-secondary'}`}>
                     {plan.description}
                   </p>
                 </div>
-                <ul className={`mt-8 space-y-3 border-t pt-7 text-sm ${
-                  plan.featured ? 'border-white/15 text-white/70' : 'border-border text-text-secondary'
+                <ul className={`plan-list mt-8 space-y-3 border-t pt-7 text-sm ${
+                  plan.featured ? '' : 'border-border text-text-secondary'
                 }`}>
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-3">
@@ -114,9 +114,9 @@ export function Pricing() {
                   href={plan.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-auto inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition duration-200 hover:-translate-y-0.5 hover:opacity-85 active:translate-y-0 ${
+                  className={`plan-cta mt-auto inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition duration-200 hover:-translate-y-0.5 hover:opacity-85 active:translate-y-0 ${
                     plan.featured
-                      ? 'bg-white text-ink'
+                      ? ''
                       : 'border border-border text-text-primary hover:border-border-strong hover:bg-canvas'
                   }`}
                 >

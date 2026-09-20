@@ -7,7 +7,7 @@ function InkpaiVisual({ compact }: { compact: boolean }) {
   return (
     <div className="relative flex h-full min-h-52 overflow-hidden bg-ink text-white">
       <div className="absolute -right-10 -top-14 h-44 w-44 rounded-full bg-signal/90 blur-3xl" />
-      <div className="absolute -bottom-20 left-1/4 h-48 w-48 rounded-full bg-[#ffbd2e]/25 blur-3xl" />
+      <div className="absolute -bottom-20 left-1/4 h-48 w-48 rounded-full bg-peach/40 blur-3xl" />
       <div className="relative flex w-full flex-col justify-between p-5 sm:p-6">
         <div className="flex items-center justify-between text-[10px] text-white/55">
           <span className="font-mono">INKPAI / EDITOR</span>

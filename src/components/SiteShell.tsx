@@ -26,7 +26,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-canvas text-text-primary">
       <a
         href="#main-content"
-        className="fixed left-4 top-3 z-[60] -translate-y-20 rounded-full bg-cta px-4 py-2 text-sm font-medium text-cta-text transition-transform focus:translate-y-0"
+        className="fixed left-4 top-3 z-[60] -translate-y-20 rounded-full bg-cta px-4 py-2 text-sm font-medium text-cta-text transition-transform focus-visible:translate-y-0"
       >
         跳到主要内容
       </a>

@@ -106,16 +106,23 @@ button {
 }
 
 .ambient-hero {
+  color: #fff;
   isolation: isolate;
   overflow: hidden;
   position: relative;
+  text-shadow: 0 1px 10px rgb(10 10 10 / 22%);
 }
 
 .ambient-hero::before {
   background:
-    radial-gradient(circle at 68% 42%, color-mix(in srgb, var(--color-signal) 78%, transparent) 0, transparent 31%),
-    radial-gradient(circle at 43% 68%, color-mix(in srgb, var(--color-signal-soft) 88%, transparent) 0, transparent 35%),
-    linear-gradient(150deg, var(--color-surface) 0%, var(--color-peach) 100%);
+    radial-gradient(circle at 78% 24%, color-mix(in srgb, var(--color-signal-soft) 70%, white) 0, transparent 32%),
+    radial-gradient(circle at 38% 78%, color-mix(in srgb, var(--color-ink) 28%, var(--color-signal)) 0, transparent 46%),
+    linear-gradient(
+      148deg,
+      color-mix(in srgb, var(--color-ink) 18%, var(--color-signal)) 0%,
+      var(--color-signal) 54%,
+      color-mix(in srgb, var(--color-peach) 42%, var(--color-signal)) 100%
+    );
   content: "";
   inset: 0;
   position: absolute;
@@ -146,6 +153,44 @@ button {
   box-shadow:
     0 0 0 1px rgb(0 0 0 / 4%),
     0 18px 40px -24px rgb(15 23 42 / 18%);
+}
+
+.plan-featured {
+  background: var(--color-ink);
+  color: #fff;
+  --plan-soft: rgb(255 255 255 / 0.45);
+  --plan-muted: rgb(255 255 255 / 0.68);
+  --plan-rule: rgb(255 255 255 / 0.16);
+  --plan-cta-bg: #fff;
+  --plan-cta-fg: var(--color-ink);
+}
+
+.plan-featured .plan-soft {
+  color: var(--plan-soft);
+}
+
+.plan-featured .plan-muted {
+  color: var(--plan-muted);
+}
+
+.plan-featured .plan-list {
+  border-color: var(--plan-rule);
+  color: var(--plan-muted);
+}
+
+.plan-featured .plan-cta {
+  background: var(--plan-cta-bg);
+  color: var(--plan-cta-fg);
+}
+
+html[data-theme="dark"] .plan-featured {
+  background: var(--color-cta);
+  color: var(--color-cta-text);
+  --plan-soft: color-mix(in srgb, var(--color-cta-text) 46%, transparent);
+  --plan-muted: color-mix(in srgb, var(--color-cta-text) 68%, transparent);
+  --plan-rule: color-mix(in srgb, var(--color-cta-text) 14%, transparent);
+  --plan-cta-bg: var(--color-ink);
+  --plan-cta-fg: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {
