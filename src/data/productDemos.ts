@@ -1,4 +1,4 @@
-import { imageexcerptEditor } from '../components/product-demo/scripts/imageexcerptEditor'
+import { imageexcerptFolder } from '../components/product-demo/scripts/imageexcerptFolder'
 import { inkpaiChat } from '../components/product-demo/scripts/inkpaiChat'
 import type { DemoMacWindow, ProductDemoScript } from '../components/product-demo/types'
 
@@ -18,7 +18,7 @@ const HOME_PRODUCT_DEMOS: Record<string, HomeProductDemo> = {
     },
   },
   imageexcerpt: {
-    script: imageexcerptEditor,
+    script: imageexcerptFolder,
     footerLabel: '书摘',
   },
 }
