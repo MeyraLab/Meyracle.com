@@ -40,20 +40,12 @@ export function EditorPreviewDemo({ script, step, cycle, animate }: EditorPrevie
           </span>
         </div>
 
-        <p className="excerpt-demo__status">
-          {recognizing ? (
-            <span className={enter}>{script.recognizeLabel}</span>
-          ) : recognized ? (
-            <span className={enter}>已识别文字</span>
-          ) : (
-            <span className="excerpt-demo__placeholder">等待识别</span>
-          )}
-        </p>
-
         <div className="excerpt-demo__field">
           <span className="excerpt-demo__label">摘抄正文</span>
           <p className="excerpt-demo__value">
-            {recognized ? (
+            {recognizing ? (
+              <span className={enter}>{script.recognizeLabel}</span>
+            ) : recognized ? (
               <span className={enter}>{script.quote}</span>
             ) : (
               <span className="excerpt-demo__placeholder">摘抄正文</span>
