@@ -1,7 +1,5 @@
-import { Folder, type FolderPhase } from '../../folder/Folder'
+import { Folder } from '../../folder/Folder'
 import type { FolderDemoScript } from '../types'
-
-const PHASES: readonly FolderPhase[] = ['idle', 'hover', 'open']
 
 interface FolderDemoProps {
   script: FolderDemoScript
@@ -10,14 +8,22 @@ interface FolderDemoProps {
 }
 
 export function FolderDemo({ script, step, animate }: FolderDemoProps) {
-  const phase = animate ? (PHASES[Math.min(Math.max(step, 1), PHASES.length) - 1] ?? 'idle') : 'hover'
+  const teaser = script.beats[1] ?? script.beats[0]
+  const beat = animate
+    ? (script.beats[Math.min(Math.max(step, 1), script.beats.length) - 1] ?? teaser)
+    : teaser
+
+  if (!beat) {
+    return null
+  }
 
   return (
     <div className="folder-demo">
       <Folder
         color={script.color}
         size={script.size}
-        phase={phase}
+        phase={beat.phase}
+        frontId={beat.frontId}
         animate={animate}
         contained
         slips={script.slips}

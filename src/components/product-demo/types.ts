@@ -1,4 +1,4 @@
-import type { FolderColor, FolderSize, FolderSlip } from '../folder/Folder'
+import type { FolderColor, FolderFrontId, FolderPhase, FolderSize, FolderSlip } from '../folder/Folder'
 
 export type DemoKind = 'chat' | 'terminal' | 'task' | 'collage' | 'editor' | 'folder'
 
@@ -43,12 +43,17 @@ export interface EditorDemoScript {
 
 export type { FolderSlip }
 
+export interface FolderDemoBeat {
+  phase: FolderPhase
+  frontId: FolderFrontId
+}
+
 export interface FolderDemoScript {
   kind: 'folder'
   color: FolderColor
   size: FolderSize
   slips: readonly FolderSlip[]
-  steps: number
+  beats: readonly FolderDemoBeat[]
   intervalMs: number
   holdMs: number
 }

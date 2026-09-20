@@ -21,7 +21,13 @@ export const imageexcerptFolder: FolderDemoScript = {
       attribution: 'Elon Musk',
     },
   ],
-  steps: 3,
-  intervalMs: 1400,
-  holdMs: 1700,
+  beats: [
+    { phase: 'idle', frontId: 3 },
+    { phase: 'hover', frontId: 3 },
+    { phase: 'open', frontId: 1 },
+    { phase: 'open', frontId: 2 },
+    { phase: 'open', frontId: 3 },
+  ],
+  intervalMs: 1750,
+  holdMs: 2000,
 }

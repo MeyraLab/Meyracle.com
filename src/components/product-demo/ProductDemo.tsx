@@ -29,7 +29,7 @@ function playbackOptions(script: ProductDemoScript) {
 
   if (script.kind === 'folder') {
     return {
-      stepCount: script.steps,
+      stepCount: script.beats.length,
       intervalMs: script.intervalMs,
       holdMs: script.holdMs,
       reducedStep: 2,
