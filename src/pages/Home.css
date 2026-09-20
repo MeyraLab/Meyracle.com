@@ -65,6 +65,13 @@ html[data-theme='dark'] .home-product-card__shine {
   transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
 }
 
+.home-product-card__footer {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  border-top: 1px solid var(--color-border);
+}
+
 .home-product-card:hover .home-product-card__body,
 .home-product-card:focus-within .home-product-card__body {
   transform: scale(1.02);

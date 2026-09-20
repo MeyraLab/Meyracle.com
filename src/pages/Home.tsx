@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { ProductDemo } from '../components/product-demo/ProductDemo'
 import { SiteShell } from '../components/SiteShell'
 import { getHomeGroups, type HomeCard } from '../data/catalog'
+import { getHomeProductDemo } from '../data/productDemos'
 import { studio } from '../data/studio'
 import './Home.css'
 
@@ -23,18 +25,39 @@ function HomeCardEntry({ item }: { item: HomeCard }) {
   )
 }
 
+function HomeProductCardFooter({ item }: { item: HomeCard }) {
+  return (
+    <div className="home-product-card__footer flex shrink-0 flex-col p-6 pt-5 sm:p-7 sm:pt-5">
+      <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+        {item.kicker}
+      </p>
+      <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
+      <HomeCardEntry item={item} />
+    </div>
+  )
+}
+
 function HomeProductCard({ item }: { item: HomeCard }) {
+  const demo = getHomeProductDemo(item.id)
+
   return (
     <article className="home-product-card flex h-full flex-col rounded-[28px] bg-surface">
       <div className="home-product-card__shine" aria-hidden="true" />
-      <div className="home-product-card__body flex h-full flex-1 flex-col p-6 sm:p-7">
-        <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
-          {item.kicker}
-        </p>
-        <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">{item.solves}</p>
-        <HomeCardEntry item={item} />
-      </div>
+      {demo ? (
+        <div className="home-product-card__body flex h-full min-h-0 flex-1 flex-col">
+          <ProductDemo script={demo} />
+          <HomeProductCardFooter item={item} />
+        </div>
+      ) : (
+        <div className="home-product-card__body flex h-full flex-1 flex-col p-6 sm:p-7">
+          <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+            {item.kicker}
+          </p>
+          <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">{item.solves}</p>
+          <HomeCardEntry item={item} />
+        </div>
+      )}
     </article>
   )
 }
