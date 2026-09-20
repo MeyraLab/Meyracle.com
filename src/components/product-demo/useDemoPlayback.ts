@@ -24,11 +24,22 @@ function usePrefersReducedMotion() {
 interface UseDemoPlaybackOptions {
   stepCount: number
   rootRef: RefObject<HTMLElement | null>
+  intervalMs?: number
+  holdMs?: number
+  fadeMs?: number
+  reducedStep?: number
 }
 
-export function useDemoPlayback({ stepCount, rootRef }: UseDemoPlaybackOptions) {
+export function useDemoPlayback({
+  stepCount,
+  rootRef,
+  intervalMs = DEMO_INTERVAL_MS,
+  holdMs = DEMO_HOLD_MS,
+  fadeMs = DEMO_STAGE_FADE_MS,
+  reducedStep,
+}: UseDemoPlaybackOptions) {
   const reducedMotion = usePrefersReducedMotion()
-  const staticCount = Math.min(DEMO_REDUCED_VISIBLE, stepCount)
+  const staticCount = Math.min(reducedStep ?? DEMO_REDUCED_VISIBLE, stepCount)
   const [inView, setInView] = useState(false)
   const [pageVisible, setPageVisible] = useState(
     () => document.visibilityState === 'visible',
@@ -71,22 +82,22 @@ export function useDemoPlayback({ stepCount, rootRef }: UseDemoPlaybackOptions) 
         setVisibleCount(1)
         setPhase('playing')
         setCycle((value) => value + 1)
-      }, DEMO_STAGE_FADE_MS)
+      }, fadeMs)
       return () => window.clearTimeout(fadeId)
     }
 
     if (visibleCount < stepCount) {
       const appendId = window.setTimeout(() => {
         setVisibleCount((count) => count + 1)
-      }, DEMO_INTERVAL_MS)
+      }, intervalMs)
       return () => window.clearTimeout(appendId)
     }
 
-    const holdId = window.setTimeout(() => {
+    const holdTimer = window.setTimeout(() => {
       setPhase('fading')
-    }, DEMO_HOLD_MS)
-    return () => window.clearTimeout(holdId)
-  }, [active, phase, stepCount, visibleCount])
+    }, holdMs)
+    return () => window.clearTimeout(holdTimer)
+  }, [active, fadeMs, holdMs, intervalMs, phase, stepCount, visibleCount])
 
   return {
     visibleCount: reducedMotion ? staticCount : visibleCount,
