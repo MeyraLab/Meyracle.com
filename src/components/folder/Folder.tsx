@@ -1,5 +1,5 @@
 import { useId, useState, type ComponentProps, type CSSProperties } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 const themes = {
@@ -59,7 +59,6 @@ const sizeScales = {
 export type FolderColor = keyof typeof themes
 export type FolderSize = keyof typeof sizeScales
 export type FolderPhase = 'idle' | 'hover' | 'open'
-export type FolderLayout = 'stack' | 'single'
 
 export interface FolderSlip {
   id: number
@@ -73,55 +72,44 @@ export type FolderComponentProps = Omit<ComponentProps<'div'>, 'color'> & {
   phase?: FolderPhase
   animate?: boolean
   contained?: boolean
-  layout?: FolderLayout
-  frontIndex?: number
   slips?: readonly FolderSlip[]
 }
 
 const BASE_WIDTH = 321
 const BASE_HEIGHT = 270
-const FRONT_SLOT = 3
-const FLAP_Z = 4
-const LIFTED_Z = 5
 
 const FLAP_PATH =
   'M0 25C0 11.1929 11.1929 0 25 0H136.084C143.044 0 149.689 2.90139 154.42 8.00608L178.08 33.5343C182.811 38.639 189.456 41.5404 196.416 41.5404H296C309.807 41.5404 321 52.7333 321 66.5404V216C321 229.807 309.807 241 296 241H25C11.1929 241 0 229.807 0 216V25Z'
 
 type Theme = (typeof themes)[keyof typeof themes]
-type SlotId = 1 | 2 | 3
-type CardPose = { y: number; x: number; rotate: number; z: number }
 
-const IDLE_POSES: Record<SlotId, CardPose> = {
-  1: { y: -10, x: 40, rotate: 10, z: 0 },
-  2: { y: -20, x: 3, rotate: 2, z: 0 },
-  3: { y: -22, x: -40, rotate: -5, z: 0 },
+type CardPose = { y: number; x: number; rotate: number }
+
+const IDLE_POSES: Record<1 | 2 | 3, CardPose> = {
+  1: { y: -10, x: 40, rotate: 10 },
+  2: { y: -20, x: 3, rotate: 2 },
+  3: { y: -22, x: -40, rotate: -5 },
 }
 
-const HOVER_POSES: Record<SlotId, CardPose> = {
-  1: { y: -30, x: 40, rotate: 14, z: 0 },
-  2: { y: -35, x: 3, rotate: -1, z: 0 },
-  3: { y: -44, x: -40, rotate: -9, z: 0 },
+const HOVER_POSES: Record<1 | 2 | 3, CardPose> = {
+  1: { y: -30, x: 40, rotate: 14 },
+  2: { y: -35, x: 3, rotate: -1 },
+  3: { y: -44, x: -40, rotate: -9 },
 }
 
-const OPEN_POSES: Record<SlotId, CardPose> = {
-  1: { y: -160, x: 70, rotate: 18, z: 0 },
-  2: { y: -180, x: 0, rotate: -3, z: 24 },
-  3: { y: -170, x: -65, rotate: -14, z: 48 },
+const OPEN_POSES: Record<1 | 2 | 3, CardPose> = {
+  1: { y: -160, x: 70, rotate: 18 },
+  2: { y: -180, x: 0, rotate: -3 },
+  3: { y: -170, x: -65, rotate: -14 },
 }
 
-const CONTAINED_OPEN_POSES: Record<SlotId, CardPose> = {
-  1: { y: -28, x: 34, rotate: 11, z: 0 },
-  2: { y: -36, x: 8, rotate: 3, z: 0 },
-  3: { y: -128, x: -2, rotate: -3, z: 72 },
+const CONTAINED_OPEN_POSES: Record<1 | 2 | 3, CardPose> = {
+  1: { y: -72, x: 38, rotate: 14 },
+  2: { y: -84, x: 0, rotate: -2 },
+  3: { y: -78, x: -38, rotate: -12 },
 }
 
-const SINGLE_POSES: Record<FolderPhase, CardPose> = {
-  idle: { y: -86, x: 0, rotate: -2, z: 56 },
-  hover: { y: -100, x: 0, rotate: -2, z: 64 },
-  open: { y: -118, x: 0, rotate: -2, z: 72 },
-}
-
-function cardPose(id: SlotId, phase: FolderPhase, contained: boolean): CardPose {
+function cardPose(id: 1 | 2 | 3, phase: FolderPhase, contained: boolean): CardPose {
   if (phase === 'open') {
     return contained ? CONTAINED_OPEN_POSES[id] : OPEN_POSES[id]
   }
@@ -145,7 +133,7 @@ function flapRotateX(phase: FolderPhase, contained: boolean) {
   return -15
 }
 
-function cardDelay(id: SlotId, phase: FolderPhase) {
+function cardDelay(id: 1 | 2 | 3, phase: FolderPhase) {
   if (id === 1) {
     return phase === 'open' ? 0.1 : phase === 'hover' ? 0.12 : 0
   }
@@ -157,38 +145,12 @@ function cardDelay(id: SlotId, phase: FolderPhase) {
   return 0
 }
 
-function slotForFrontIndex(slipIndex: number, frontIndex: number, count: number): SlotId {
-  const n = Math.max(count, 1)
-  const start = ((frontIndex % n) + n) % n
-  const rel = (slipIndex - start + n) % n
-
-  if (n === 1) {
-    return FRONT_SLOT
-  }
-
-  if (n === 2) {
-    return rel === 0 ? FRONT_SLOT : 1
-  }
-
-  return ([FRONT_SLOT, 2, 1] as const)[rel] ?? 1
-}
-
-function wrapIndex(index: number, length: number) {
-  if (length <= 0) {
-    return 0
-  }
-
-  return ((index % length) + length) % length
-}
-
 function FolderComponent({
   color = 'black',
   size = 'md',
   phase,
   animate = true,
   contained = false,
-  layout = 'stack',
-  frontIndex = 0,
   slips,
   className,
   ...props
@@ -200,11 +162,9 @@ function FolderComponent({
   const [opened, setOpened] = useState(false)
   const controlled = phase !== undefined
   const currentPhase: FolderPhase = phase ?? (opened ? 'open' : hovered ? 'hover' : 'idle')
-  const slipList = slips ?? []
-  const single = layout === 'single'
-  const activeSlip = slipList[wrapIndex(frontIndex, slipList.length)]
+  const slipsById = new Map((slips ?? []).map((slip) => [slip.id, slip]))
 
-  const spring = (id: SlotId) =>
+  const spring = (id: 1 | 2 | 3) =>
     animate
       ? { type: 'spring' as const, stiffness: 120, damping: 13, delay: cardDelay(id, currentPhase) }
       : { duration: 0 }
@@ -213,18 +173,9 @@ function FolderComponent({
     ? { type: 'spring' as const, stiffness: 120, damping: 14 }
     : { duration: 0 }
 
-  const stackItems =
-    slipList.length > 0
-      ? slipList.slice(0, 3).map((slip, index) => ({
-          slot: slotForFrontIndex(index, frontIndex, Math.min(slipList.length, 3)),
-          slip,
-        }))
-      : ([1, 2, 3] as const).map((slot) => ({ slot, slip: undefined }))
-
   return (
     <div
       data-slot="folder"
-      data-layout={layout}
       className={cn('relative flex h-full w-full items-center justify-center', className)}
       style={
         {
@@ -261,10 +212,9 @@ function FolderComponent({
             height: BASE_HEIGHT,
             transform: `translate(-50%, -50%) scale(${scale})`,
             perspective: 800 * scale,
-            transformStyle: 'preserve-3d',
           }}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 0 }}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
               style={{
                 width: BASE_WIDTH,
@@ -276,52 +226,20 @@ function FolderComponent({
             />
           </div>
 
-          {single ? (
-            <div
-              className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-              style={{ zIndex: LIFTED_Z }}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={activeSlip?.id ?? 'empty'}
-                  className="absolute"
-                  initial={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y + 16 } : false}
-                  animate={{ opacity: 1, ...SINGLE_POSES[currentPhase] }}
-                  exit={animate ? { opacity: 0, y: SINGLE_POSES[currentPhase].y - 12 } : undefined}
-                  transition={animate ? { duration: 0.38, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
-                >
-                  <Card
-                    id={FRONT_SLOT}
-                    theme={theme}
-                    uid={reactId}
-                    slip={activeSlip}
-                    lifted
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          ) : (
-            stackItems.map(({ slot, slip }) => {
-              const pose = cardPose(slot, currentPhase, contained)
-              const lifted = currentPhase === 'open' && slot === FRONT_SLOT
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+            {([1, 2, 3] as const).map((id) => {
+              const pose = cardPose(id, currentPhase, contained)
               return (
-                <div
-                  key={slip?.id ?? slot}
-                  className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-                  style={{ zIndex: lifted ? LIFTED_Z : slot }}
-                >
-                  <motion.div className="absolute" animate={pose} transition={spring(slot)}>
-                    <Card id={slot} theme={theme} uid={`${reactId}-${slip?.id ?? slot}`} slip={slip} lifted={lifted} />
-                  </motion.div>
-                </div>
+                <motion.div key={id} className="absolute" animate={pose} transition={spring(id)}>
+                  <Card id={id} theme={theme} uid={reactId} slip={slipsById.get(id)} />
+                </motion.div>
               )
-            })
-          )}
+            })}
+          </div>
 
           <motion.div
             className="absolute top-1/2 left-1/2 mt-4 -translate-x-1/2 -translate-y-1/2"
             style={{
-              zIndex: FLAP_Z,
               transformOrigin: 'bottom center',
               transformStyle: 'preserve-3d',
               width: 321,
@@ -400,14 +318,13 @@ type CardProps = {
   theme: Theme
   uid: string
   slip?: FolderSlip
-  lifted?: boolean
 }
 
-function Card({ id, theme, uid, slip, lifted = false }: CardProps) {
+function Card({ id, theme, uid, slip }: CardProps) {
   const filterId = `filter0_i_card_${uid}_${id}`
 
   return (
-    <div data-slot="folder-card" className={cn('folder-card', lifted && 'folder-card--lifted')}>
+    <div data-slot="folder-card" className="folder-card">
       <svg width="164" height="214" viewBox="0 0 164 214" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter={`url(#${filterId})`}>
           <rect width="163.078" height="213.262" rx="20" fill={theme.cardFill} />
@@ -443,7 +360,7 @@ function Card({ id, theme, uid, slip, lifted = false }: CardProps) {
       {slip ? (
         <div className="folder-card__copy">
           <p className="folder-card__quote">{slip.quote}</p>
-          <p className="folder-card__byline">—{slip.attribution}</p>
+          <p className="folder-card__byline">{slip.attribution}</p>
         </div>
       ) : null}
     </div>
