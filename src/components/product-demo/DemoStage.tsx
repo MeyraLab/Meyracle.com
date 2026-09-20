@@ -6,14 +6,27 @@ interface DemoStageProps {
   fading?: boolean
   split?: boolean
   windowed?: boolean
+  folder?: boolean
   ref?: Ref<HTMLDivElement>
 }
 
-export function DemoStage({ children, fading = false, split = false, windowed = false, ref }: DemoStageProps) {
+export function DemoStage({
+  children,
+  fading = false,
+  split = false,
+  windowed = false,
+  folder = false,
+  ref,
+}: DemoStageProps) {
   return (
     <div
       ref={ref}
-      className={cn('demo-stage', split && 'demo-stage--split', windowed && 'demo-stage--windowed')}
+      className={cn(
+        'demo-stage',
+        split && 'demo-stage--split',
+        windowed && 'demo-stage--windowed',
+        folder && 'demo-stage--folder',
+      )}
       aria-hidden="true"
     >
       <div className={cn('demo-stage__content', fading && 'is-fading')}>{children}</div>

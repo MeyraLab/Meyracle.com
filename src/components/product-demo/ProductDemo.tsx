@@ -3,6 +3,7 @@ import { DemoStage } from './DemoStage'
 import { MacDemoWindow } from './MacDemoWindow'
 import { ChatDemo } from './renderers/ChatDemo'
 import { EditorPreviewDemo } from './renderers/EditorPreviewDemo'
+import { FolderDemo } from './renderers/FolderDemo'
 import type { DemoMacWindow, ProductDemoScript } from './types'
 import { useDemoPlayback } from './useDemoPlayback'
 import './product-demo.css'
@@ -23,6 +24,16 @@ function playbackOptions(script: ProductDemoScript) {
       intervalMs: script.intervalMs,
       holdMs: script.holdMs,
       reducedStep: script.steps,
+    }
+  }
+
+  if (script.kind === 'folder') {
+    return {
+      stepCount: script.steps,
+      intervalMs: script.intervalMs,
+      holdMs: script.holdMs,
+      reducedStep: 2,
+      loopMode: 'cycle' as const,
     }
   }
 
@@ -53,12 +64,18 @@ export function ProductDemo({ script, macWindow }: ProductDemoProps) {
       />
     ) : null
 
+  const folder =
+    script.kind === 'folder' ? (
+      <FolderDemo script={script} step={playback.visibleCount} animate={!playback.reducedMotion} />
+    ) : null
+
   return (
     <DemoStage
       ref={stageRef}
       fading={playback.fading}
       split={script.kind === 'editor'}
       windowed={Boolean(macWindow)}
+      folder={script.kind === 'folder'}
     >
       {macWindow && chat ? (
         <MacDemoWindow title={macWindow.title} status={macWindow.status}>
@@ -68,8 +85,10 @@ export function ProductDemo({ script, macWindow }: ProductDemoProps) {
         <>
           {chat}
           {editor}
+          {folder}
         </>
       )}
     </DemoStage>
   )
 }
+

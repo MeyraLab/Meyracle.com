@@ -28,6 +28,7 @@ interface UseDemoPlaybackOptions {
   holdMs?: number
   fadeMs?: number
   reducedStep?: number
+  loopMode?: 'fade' | 'cycle'
 }
 
 export function useDemoPlayback({
@@ -37,6 +38,7 @@ export function useDemoPlayback({
   holdMs = DEMO_HOLD_MS,
   fadeMs = DEMO_STAGE_FADE_MS,
   reducedStep,
+  loopMode = 'fade',
 }: UseDemoPlaybackOptions) {
   const reducedMotion = usePrefersReducedMotion()
   const staticCount = Math.min(reducedStep ?? DEMO_REDUCED_VISIBLE, stepCount)
@@ -93,11 +95,20 @@ export function useDemoPlayback({
       return () => window.clearTimeout(appendId)
     }
 
+    if (loopMode === 'cycle') {
+      const holdTimer = window.setTimeout(() => {
+        setVisibleCount(1)
+        setPhase('playing')
+        setCycle((value) => value + 1)
+      }, holdMs)
+      return () => window.clearTimeout(holdTimer)
+    }
+
     const holdTimer = window.setTimeout(() => {
       setPhase('fading')
     }, holdMs)
     return () => window.clearTimeout(holdTimer)
-  }, [active, fadeMs, holdMs, intervalMs, phase, stepCount, visibleCount])
+  }, [active, fadeMs, holdMs, intervalMs, loopMode, phase, stepCount, visibleCount])
 
   return {
     visibleCount: reducedMotion ? staticCount : visibleCount,

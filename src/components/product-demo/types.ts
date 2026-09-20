@@ -1,4 +1,6 @@
-export type DemoKind = 'chat' | 'terminal' | 'task' | 'collage' | 'editor'
+import type { FolderColor, FolderSize, FolderSlip } from '../folder/Folder'
+
+export type DemoKind = 'chat' | 'terminal' | 'task' | 'collage' | 'editor' | 'folder'
 
 export type ExcerptThemeId = 'paper' | 'ink'
 
@@ -39,5 +41,17 @@ export interface EditorDemoScript {
   holdMs: number
 }
 
+export type { FolderSlip }
+
+export interface FolderDemoScript {
+  kind: 'folder'
+  color: FolderColor
+  size: FolderSize
+  slips: readonly FolderSlip[]
+  steps: number
+  intervalMs: number
+  holdMs: number
+}
+
 /** Union grows as terminal / task / collage renderers are added. */
-export type ProductDemoScript = ChatDemoScript | EditorDemoScript
+export type ProductDemoScript = ChatDemoScript | EditorDemoScript | FolderDemoScript
