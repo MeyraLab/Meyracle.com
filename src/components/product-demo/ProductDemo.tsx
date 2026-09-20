@@ -32,7 +32,7 @@ function playbackOptions(script: ProductDemoScript) {
       stepCount: script.steps,
       intervalMs: script.intervalMs,
       holdMs: script.holdMs,
-      reducedStep: 3,
+      reducedStep: 2,
       loopMode: 'cycle' as const,
     }
   }
@@ -66,12 +66,7 @@ export function ProductDemo({ script, macWindow }: ProductDemoProps) {
 
   const folder =
     script.kind === 'folder' ? (
-      <FolderDemo
-        script={script}
-        step={playback.visibleCount}
-        cycle={playback.cycle}
-        animate={!playback.reducedMotion}
-      />
+      <FolderDemo script={script} step={playback.visibleCount} animate={!playback.reducedMotion} />
     ) : null
 
   return (
