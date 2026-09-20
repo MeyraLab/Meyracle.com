@@ -1,13 +1,16 @@
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ProductDemo } from '../components/product-demo/ProductDemo'
 import { SiteShell } from '../components/SiteShell'
 import { getHomeGroups, type HomeCard } from '../data/catalog'
 import { getHomeProductDemo } from '../data/productDemos'
 import { studio } from '../data/studio'
+import { cn } from '../lib/cn'
 import './Home.css'
 
-const cardLinkClassName =
-  'home-product-card__cta mt-6 inline-flex h-12 min-w-12 items-center justify-center self-start rounded-full bg-cta px-5 text-[13px] font-medium text-cta-text'
+const cardLinkClassName = cn(
+  'home-product-card__cta mt-6 inline-flex h-12 min-w-12 items-center justify-center self-start rounded-full bg-cta px-5 text-[13px] font-medium text-cta-text',
+)
 
 function HomeCardEntry({ item }: { item: HomeCard }) {
   if (item.external) {
@@ -25,14 +28,14 @@ function HomeCardEntry({ item }: { item: HomeCard }) {
   )
 }
 
-function HomeProductCardFooter({ item }: { item: HomeCard }) {
+function HomeProductCardCompactFooter({ label }: { label: string }) {
   return (
-    <div className="home-product-card__footer flex shrink-0 flex-col p-6 pt-5 sm:p-7 sm:pt-5">
-      <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
-        {item.kicker}
-      </p>
-      <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
-      <HomeCardEntry item={item} />
+    <div className="home-product-card__footer home-product-card__footer--compact">
+      <span className="home-product-card__label">{label}</span>
+      <span className="home-product-card__explore">
+        探索
+        <ArrowRight className="home-product-card__explore-icon" strokeWidth={1.75} aria-hidden="true" />
+      </span>
     </div>
   )
 }
@@ -40,24 +43,50 @@ function HomeProductCardFooter({ item }: { item: HomeCard }) {
 function HomeProductCard({ item }: { item: HomeCard }) {
   const demo = getHomeProductDemo(item.id)
 
+  if (demo) {
+    const linkClassName = cn(
+      'home-product-card__link home-product-card__body flex h-full min-h-0 flex-1 flex-col',
+    )
+    const body = (
+      <>
+        <ProductDemo script={demo.script} macWindow={demo.macWindow} />
+        <HomeProductCardCompactFooter label={demo.footerLabel} />
+      </>
+    )
+
+    return (
+      <article className="home-product-card flex h-full flex-col rounded-[28px] bg-surface">
+        <div className="home-product-card__shine" aria-hidden="true" />
+        {item.external ? (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClassName}
+            aria-label={`探索 ${item.name}`}
+          >
+            {body}
+          </a>
+        ) : (
+          <Link to={item.href} className={linkClassName} aria-label={`探索 ${item.name}`}>
+            {body}
+          </Link>
+        )}
+      </article>
+    )
+  }
+
   return (
     <article className="home-product-card flex h-full flex-col rounded-[28px] bg-surface">
       <div className="home-product-card__shine" aria-hidden="true" />
-      {demo ? (
-        <div className="home-product-card__body flex h-full min-h-0 flex-1 flex-col">
-          <ProductDemo script={demo} />
-          <HomeProductCardFooter item={item} />
-        </div>
-      ) : (
-        <div className="home-product-card__body flex h-full flex-1 flex-col p-6 sm:p-7">
-          <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
-            {item.kicker}
-          </p>
-          <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">{item.solves}</p>
-          <HomeCardEntry item={item} />
-        </div>
-      )}
+      <div className="home-product-card__body flex h-full flex-1 flex-col p-6 sm:p-7">
+        <p className="home-product-card__kicker text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+          {item.kicker}
+        </p>
+        <h3 className="mt-3 text-xl font-medium tracking-tight text-text-primary">{item.name}</h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-text-secondary">{item.solves}</p>
+        <HomeCardEntry item={item} />
+      </div>
     </article>
   )
 }
