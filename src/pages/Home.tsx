@@ -102,7 +102,7 @@ export function Home() {
           {studio.tagline}
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">{studio.description}</p>
-        <div className="mt-10 h-[clamp(520px,78vh,680px)]">
+        <div className="mt-10 h-[clamp(420px,56vh,560px)]">
           <SoftAuroraShowcase />
         </div>
       </section>
