@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import SoftAuroraShowcase from '../components/hero/SoftAuroraShowcase'
 import { ProductDemo } from '../components/product-demo/ProductDemo'
 import { SiteShell } from '../components/SiteShell'
 import { getHomeGroups, type HomeCard } from '../data/catalog'
@@ -102,9 +101,6 @@ export function Home() {
           {studio.tagline}
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">{studio.description}</p>
-        <div className="mt-10 h-[clamp(520px,78vh,680px)]">
-          <SoftAuroraShowcase />
-        </div>
       </section>
 
       <div className="home-product-entrance">
