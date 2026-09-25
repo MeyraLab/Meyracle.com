@@ -21,8 +21,11 @@ const plans = [
   },
   {
     name: 'Inkpai Plus',
-    price: 'US$15.00',
-    billing: '7 天免费试用。试用结束后每年自动续费，可在当前计费周期结束前取消。',
+    price: '¥128',
+    period: '/年',
+    priceTag: '限时',
+    originalPrice: '¥198',
+    billing: '一次性购买 12 个月使用权，不自动续费。到期后如需继续使用，请重新购买。',
     description: '供需要更多版式与导出能力的创作者使用。',
     features: [
       '包含基础版全部功能',
@@ -31,8 +34,8 @@ const plans = [
       '图片与素材排版工具',
       '订阅期内持续更新的会员功能',
     ],
-    action: '开始 7 天免费试用',
-    href: 'https://inkpai.meyracle.com/pricing?checkout=plus',
+    action: '微信支付购买一年',
+    href: 'https://inkpai.meyracle.com/pricing',
     featured: true,
   },
 ]
@@ -47,7 +50,7 @@ export function Pricing() {
             产品价格与权益
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Inkpai 提供免费基础版，以及按年订阅的 Plus。图片书摘免费使用。
+            Inkpai 提供免费基础版，以及一次性购买 12 个月使用权的 Plus。图片书摘免费使用。
           </p>
         </header>
 
@@ -76,7 +79,22 @@ export function Pricing() {
               <article key={plan.name} className="flex h-full flex-col rounded-[28px] bg-surface p-6 sm:p-8">
                 <h3 className="text-xl font-medium tracking-tight text-text-primary">{plan.name}</h3>
                 <div className="mt-7">
-                  <p className="text-4xl font-medium tracking-[-0.04em] text-text-primary">{plan.price}</p>
+                  <p className="text-4xl font-medium tracking-[-0.04em] text-text-primary">
+                    {plan.price}
+                    {plan.period ? (
+                      <span className="ml-1 text-base font-normal tracking-normal text-text-secondary">{plan.period}</span>
+                    ) : null}
+                  </p>
+                  {plan.priceTag || plan.originalPrice ? (
+                    <p className="mt-2 flex flex-wrap gap-x-3 text-sm text-text-secondary">
+                      {plan.priceTag ? <span>{plan.priceTag}</span> : null}
+                      {plan.originalPrice ? (
+                        <span>
+                          原价 <s>{plan.originalPrice}</s>
+                        </span>
+                      ) : null}
+                    </p>
+                  ) : null}
                   <p className="mt-3 text-sm font-medium leading-relaxed text-text-primary">{plan.billing}</p>
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-text-secondary">{plan.description}</p>
@@ -109,7 +127,7 @@ export function Pricing() {
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              点击“开始 7 天免费试用”后，登录或注册 Inkpai 账号并进入 Waffo 结账页。订阅与当前账号绑定。试用结束后按 US$15.00/年自动续费，除非在试用结束或下一次续费前取消。
+              点击“微信支付购买一年”后，登录或注册 Inkpai 账号并进入 Waffo 收银台，使用微信支付完成付款。¥128/年为限时价（原价 ¥198），12 个月使用权与当前账号绑定。一次性购买，不自动续费；到期后如需继续使用，请重新购买。
             </p>
           </div>
         </section>
@@ -138,7 +156,7 @@ export function Pricing() {
 
         <section className="mt-16 border-t border-border pt-10 text-sm leading-relaxed text-text-secondary">
           <p>
-            价格以美元结算。结账前展示应付金额、税费与续费条款。
+            价格以人民币结算，使用微信支付。结账前展示应付金额与税费。
           </p>
           <p className="mt-3">
             需要协助，请联系{' '}
@@ -156,4 +174,3 @@ export function Pricing() {
     </SiteShell>
   )
 }
-
