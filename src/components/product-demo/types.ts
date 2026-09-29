@@ -53,5 +53,9 @@ export interface FolderDemoScript {
   holdMs: number
 }
 
+export interface CanvasDemoScript {
+  kind: 'canvas'
+}
+
 /** Union grows as terminal / task / collage renderers are added. */
-export type ProductDemoScript = ChatDemoScript | EditorDemoScript | FolderDemoScript
+export type ProductDemoScript = ChatDemoScript | EditorDemoScript | FolderDemoScript | CanvasDemoScript

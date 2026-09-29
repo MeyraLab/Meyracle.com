@@ -4,6 +4,7 @@ import { MacDemoWindow } from './MacDemoWindow'
 import { ChatDemo } from './renderers/ChatDemo'
 import { EditorPreviewDemo } from './renderers/EditorPreviewDemo'
 import { FolderDemo } from './renderers/FolderDemo'
+import { InkpaiCanvasDemo } from './renderers/InkpaiCanvasDemo'
 import type { DemoMacWindow, ProductDemoScript } from './types'
 import { useDemoPlayback } from './useDemoPlayback'
 import './product-demo.css'
@@ -35,6 +36,10 @@ function playbackOptions(script: ProductDemoScript) {
       reducedStep: 2,
       loopMode: 'cycle' as const,
     }
+  }
+
+  if (script.kind === 'canvas') {
+    return { stepCount: 0 }
   }
 
   return { stepCount: 0 }
@@ -69,6 +74,8 @@ export function ProductDemo({ script, macWindow }: ProductDemoProps) {
       <FolderDemo script={script} step={playback.visibleCount} animate={!playback.reducedMotion} />
     ) : null
 
+  const canvas = script.kind === 'canvas' ? <InkpaiCanvasDemo /> : null
+
   return (
     <DemoStage
       ref={stageRef}
@@ -77,9 +84,10 @@ export function ProductDemo({ script, macWindow }: ProductDemoProps) {
       windowed={Boolean(macWindow)}
       folder={script.kind === 'folder'}
     >
-      {macWindow && chat ? (
+      {macWindow && (chat || canvas) ? (
         <MacDemoWindow title={macWindow.title} status={macWindow.status}>
           {chat}
+          {canvas}
         </MacDemoWindow>
       ) : (
         <>
