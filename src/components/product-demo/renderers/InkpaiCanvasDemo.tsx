@@ -1,30 +1,53 @@
 import { useCallback, useEffect, useRef, type PointerEvent } from 'react'
 
-type TemplateId =
-  | 'minimal'
-  | 'magazine'
-  | 'blush'
-  | 'editorial'
-  | 'ink'
-  | 'noir'
-  | 'notebook'
-  | 'sage'
-
 interface TemplateCard {
-  id: TemplateId
+  id: string
   title: string
   subtitle: string
+  image: string
 }
 
 const TEMPLATES: readonly TemplateCard[] = [
-  { id: 'minimal', title: '极简', subtitle: '居中标题 · 细线' },
-  { id: 'magazine', title: '杂志风', subtitle: '大字距 · 衬线刊头' },
-  { id: 'blush', title: 'Soft Blush', subtitle: '浅粉留白 · 玫瑰标题' },
-  { id: 'editorial', title: '2020s', subtitle: '扇贝海报 · 编辑美学' },
-  { id: 'ink', title: '墨染刊面', subtitle: '金线引用 · 长文' },
-  { id: 'noir', title: '黑金序', subtitle: '深底 · 序言' },
-  { id: 'notebook', title: '手账', subtitle: '暖纸 · 虚线' },
-  { id: 'sage', title: '松烟翠', subtitle: '书卷 · 深读' },
+  {
+    id: 'food-journal',
+    title: '云朵美食手记',
+    subtitle: '美食',
+    image:
+      'https://images.unsplash.com/photo-1717677737586-99affb851595?w=800&h=800&fit=crop&auto=format',
+  },
+  {
+    id: 'food-journal-blue',
+    title: '钴蓝美食手记',
+    subtitle: '美食',
+    image:
+      'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&h=800&fit=crop&auto=format',
+  },
+  {
+    id: 'food-journal-red',
+    title: '艳红烘焙手记',
+    subtitle: '美食',
+    image:
+      'https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=800&h=800&fit=crop&auto=format',
+  },
+  {
+    id: 'creator-journal',
+    title: '创作者手记',
+    subtitle: '创作者手记',
+    image:
+      'https://images.unsplash.com/photo-1510090896050-4005ac527060?w=800&h=800&fit=crop&auto=format',
+  },
+  {
+    id: 'fashion-culture',
+    title: '独立时尚刊物',
+    subtitle: '时尚美妆',
+    image: 'https://inkpai.meyracle.com/assets/fashion-culture/opening.jpg',
+  },
+  {
+    id: 'cultural-venue',
+    title: '文化空间志',
+    subtitle: '文化艺术',
+    image: 'https://inkpai.meyracle.com/assets/cultural-venue/cover.jpg',
+  },
 ]
 
 const MATRIX = [
@@ -32,85 +55,6 @@ const MATRIX = [
   [3, 4, 5],
   [6, 7, 8],
 ] as const
-
-function TemplateSheet({ id }: { id: TemplateId }) {
-  if (id === 'minimal') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--minimal">
-        <span>01</span>
-        <strong>留白</strong>
-        <i />
-        <p>句子回到该在的位置。</p>
-      </div>
-    )
-  }
-  if (id === 'magazine') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--magazine">
-        <span>ISSUE</span>
-        <strong>刊头</strong>
-        <p>字距拉开的封面标题。</p>
-      </div>
-    )
-  }
-  if (id === 'blush') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--blush">
-        <strong>玫瑰</strong>
-        <em>浅粉里的杂志标题</em>
-        <p>留白比装饰更多。</p>
-      </div>
-    )
-  }
-  if (id === 'editorial') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--editorial">
-        <i />
-        <div>
-          <strong>2020s</strong>
-          <em>编辑美学</em>
-        </div>
-        <i />
-      </div>
-    )
-  }
-  if (id === 'ink') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--ink">
-        <span>EDITORIAL</span>
-        <strong>墨染</strong>
-        <p>金线压住一句引用。</p>
-      </div>
-    )
-  }
-  if (id === 'noir') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--noir">
-        <span>NO. 12</span>
-        <strong>序</strong>
-        <i />
-        <p>深底上的开篇。</p>
-      </div>
-    )
-  }
-  if (id === 'notebook') {
-    return (
-      <div className="inkpai-sheet inkpai-sheet--notebook">
-        <span>NOTE</span>
-        <strong>今日</strong>
-        <i />
-        <p>短记顺着虚线往下走。</p>
-      </div>
-    )
-  }
-  return (
-    <div className="inkpai-sheet inkpai-sheet--sage">
-      <strong>松烟</strong>
-      <p>适合慢慢读完的一章。</p>
-      <span>深度</span>
-    </div>
-  )
-}
 
 export function InkpaiCanvasDemo() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -280,7 +224,13 @@ export function InkpaiCanvasDemo() {
               >
                 {TEMPLATES.map((item) => (
                   <article key={`${blockId}-${item.id}`} className="inkpai-canvas__card">
-                    <TemplateSheet id={item.id} />
+                    <img
+                      src={item.image}
+                      alt=""
+                      draggable={false}
+                      referrerPolicy="no-referrer"
+                      className="inkpai-canvas__photo"
+                    />
                     <p className="inkpai-canvas__title">{item.title}</p>
                     <p className="inkpai-canvas__subtitle">{item.subtitle}</p>
                   </article>
