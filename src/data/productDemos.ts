@@ -1,5 +1,5 @@
 import { imageexcerptFolder } from '../components/product-demo/scripts/imageexcerptFolder'
-import { inkpaiChat } from '../components/product-demo/scripts/inkpaiChat'
+import { inkpaiCanvas } from '../components/product-demo/scripts/inkpaiCanvas'
 import type { DemoMacWindow, ProductDemoScript } from '../components/product-demo/types'
 
 export interface HomeProductDemo {
@@ -10,7 +10,7 @@ export interface HomeProductDemo {
 
 const HOME_PRODUCT_DEMOS: Record<string, HomeProductDemo> = {
   inkpai: {
-    script: inkpaiChat,
+    script: inkpaiCanvas,
     footerLabel: '写作',
     macWindow: {
       title: 'inkpai / 排版',
