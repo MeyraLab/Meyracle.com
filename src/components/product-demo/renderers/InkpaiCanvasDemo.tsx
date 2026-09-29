@@ -12,41 +12,37 @@ const TEMPLATES: readonly TemplateCard[] = [
     id: 'food-journal',
     title: '云朵美食手记',
     subtitle: '美食',
-    image:
-      'https://images.unsplash.com/photo-1717677737586-99affb851595?w=800&h=800&fit=crop&auto=format',
+    image: '/templates/food-journal.jpg',
   },
   {
     id: 'food-journal-blue',
     title: '钴蓝美食手记',
     subtitle: '美食',
-    image:
-      'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&h=800&fit=crop&auto=format',
+    image: '/templates/food-journal-blue.jpg',
   },
   {
     id: 'food-journal-red',
     title: '艳红烘焙手记',
     subtitle: '美食',
-    image:
-      'https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=800&h=800&fit=crop&auto=format',
+    image: '/templates/food-journal-red.jpg',
   },
   {
     id: 'creator-journal',
     title: '创作者手记',
     subtitle: '创作者手记',
-    image:
-      'https://images.unsplash.com/photo-1510090896050-4005ac527060?w=800&h=800&fit=crop&auto=format',
+    image: '/templates/creator-journal.jpg',
   },
   {
     id: 'fashion-culture',
     title: '独立时尚刊物',
     subtitle: '时尚美妆',
-    image: 'https://inkpai.meyracle.com/assets/fashion-culture/opening.jpg',
+    image: '/templates/fashion-culture.jpg',
   },
   {
     id: 'cultural-venue',
     title: '文化空间志',
     subtitle: '文化艺术',
-    image: 'https://inkpai.meyracle.com/assets/cultural-venue/cover.jpg',
+    image: '/templates/cultural-venue.jpg',
   },
 ]
 
