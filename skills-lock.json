@@ -581,6 +581,12 @@
       "skillPath": "scss-best-practices/SKILL.md",
       "computedHash": "16ac9e8bf135304254a358776c5fac043799c1c3ac40221da1338ee972506de5"
     },
+    "search": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "enterprise-search/skills/search/SKILL.md",
+      "computedHash": "e906c00dbea657383ad408fe139979d8d31a76b1b5d4131f40817c31a65b7045"
+    },
     "seo-audit": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
