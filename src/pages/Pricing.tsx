@@ -28,11 +28,12 @@ const plans = [
     billing: '一次性购买 12 个月使用权，不自动续费。到期后如需继续使用，请重新购买。',
     description: '供需要更多版式与导出能力的创作者使用。',
     features: [
-      '包含基础版全部功能',
-      'AI 辅助文章排版',
-      'Plus 高级排版样式与组件',
-      '图片与素材排版工具',
-      '订阅期内持续更新的会员功能',
+      '包含基础版全部能力',
+      '高级风格解锁并可复制',
+      '配套刊头与分节素材',
+      '全部风格长图导出',
+      '使用期内新增的 Plus 内容',
+      '12 个月产品更新',
     ],
     action: '微信支付购买一年',
     href: 'https://inkpai.meyracle.com/pricing',
@@ -127,7 +128,7 @@ export function Pricing() {
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
             <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              点击“微信支付购买一年”后，登录或注册 Inkpai 账号并进入 Waffo 收银台，使用微信支付完成付款。¥128/年为限时价（原价 ¥198），12 个月使用权与当前账号绑定。一次性购买，不自动续费；到期后如需继续使用，请重新购买。
+              点击“微信支付购买一年”后，登录或注册 Inkpai 账号，勾选同意服务条款和隐私政策，再进入 Waffo 收银台，使用微信支付完成付款。¥128/年为限时价（原价 ¥198），12 个月使用权与当前账号绑定。一次性购买，不自动续费；到期后如需继续使用，请重新购买。
             </p>
           </div>
         </section>
