@@ -136,9 +136,20 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
                   {offerings.map((item) => (
                     <li key={item.id}>
-                      <Link to={`/products/${item.slug}`} className="transition-colors hover:text-text-primary">
-                        {item.name}
-                      </Link>
+                      {item.appUrl ? (
+                        <a
+                          href={item.appUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors hover:text-text-primary"
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link to={`/products/${item.slug}`} className="transition-colors hover:text-text-primary">
+                          {item.name}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
