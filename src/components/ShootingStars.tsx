@@ -9,7 +9,8 @@ import { cn } from '../lib/cn'
  * background layer:
  * - the layer never receives pointer events; parallax + click-to-spawn listen
  *   on `window` and ignore clicks on links / buttons / form controls
- * - star count scales with viewport area, DPR capped at 2
+ * - star count scales with viewport area; backing store = CSS size x DPR
+ *   (capped at 3, with a pixel budget) so it stays crisp on high-DPI screens
  * - parallax disabled on touch / coarse pointers
  * - RAF loop paused while the tab is hidden
  * - prefers-reduced-motion: static stars, no meteors
@@ -52,7 +53,10 @@ const DEFAULT_TRAIL_LENGTH: [number, number] = [90, 180]
 // Site palette: neutral black sky, white/gray stars and meteors (no blue tint).
 const SITE_STAR_COLORS = ['#FFFFFF', '#F5F5F5', '#E5E5E5', '#D4D4D4'] as const
 const REFERENCE_AREA = 1440 * 900
-const MAX_DPR = 2
+const MAX_DPR = 3
+// Upper bound for canvas backing pixels (e.g. 1440x900 @3x ≈ 11.7M). Very large
+// high-DPI viewports get a slightly lower effective DPR to keep frames cheap.
+const MAX_BACKING_PIXELS = 12_000_000
 const PARALLAX_PX = 14
 const MAX_EMBERS = 180
 const INTERACTIVE_SELECTOR =
@@ -247,7 +251,7 @@ export function ShootingStars({
     const headRgb = parseColor(headColor)
     const emberWarm = parseColor(flashColor)
     const headSprite = makeGlowSprite(trailRgb, 96)
-    const flashSprite = makeGlowSprite(emberWarm, 128)
+    const flashSprite = makeGlowSprite(emberWarm, 256)
 
     const rad = (angle * Math.PI) / 180
     const dirX = Math.cos(rad)
@@ -255,6 +259,8 @@ export function ShootingStars({
 
     let width = 0
     let height = 0
+    let dpr = 1
+    let watchedDpr = 1
     let initWidth = 0
     let initHeight = 0
     let motionScale = 1
@@ -293,15 +299,25 @@ export function ShootingStars({
     }
 
     const resize = () => {
-      const w = container.clientWidth
-      const h = container.clientHeight
+      // Fractional CSS size, so the backing store maps 1:1 onto device pixels.
+      const rect = container.getBoundingClientRect()
+      const w = rect.width
+      const h = rect.height
       if (w === 0 || h === 0) return
-      const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
+      let nextDpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
+      const budget = Math.sqrt(MAX_BACKING_PIXELS / (w * h))
+      if (nextDpr > budget) nextDpr = Math.max(1, budget)
       width = w
       height = h
-      canvas.width = Math.round(w * dpr)
-      canvas.height = Math.round(h * dpr)
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      const backingW = Math.max(1, Math.round(w * nextDpr))
+      const backingH = Math.max(1, Math.round(h * nextDpr))
+      if (canvas.width !== backingW) canvas.width = backingW
+      if (canvas.height !== backingH) canvas.height = backingH
+      // Exact backing/CSS ratio (not the rounded DPR) so nothing is resampled.
+      dpr = backingW / w
+      ctx.setTransform(dpr, 0, 0, backingH / h, 0, 0)
+      ctx.imageSmoothingEnabled = true
+      ctx.imageSmoothingQuality = 'high'
       motionScale = Math.min(1, Math.max(0.6, Math.min(w, h) / 800))
       // Regenerate only on width change or a big height change, so the mobile
       // address bar collapsing/expanding doesn't reshuffle the sky.
@@ -358,8 +374,9 @@ export function ShootingStars({
           ? 0.55 + 0.45 * Math.sin(time * 0.0015 * star.freq * twinkleSpeed + star.phase)
           : 0.85
         const a = star.alpha * twinkle
-        const px = star.x * width + ox * star.depth
-        const py = star.y * height + oy * star.depth
+        // Snap to the device-pixel grid so tiny stars stay sharp dots.
+        const px = Math.round((star.x * width + ox * star.depth) * dpr) / dpr
+        const py = Math.round((star.y * height + oy * star.depth) * dpr) / dpr
         if (star.radiant) {
           const size = star.r * 9 * (0.85 + 0.15 * twinkle)
           ctx.globalAlpha = a
@@ -372,7 +389,7 @@ export function ShootingStars({
           ctx.globalAlpha = a
           ctx.fillStyle = rgba(palette[star.color], 1)
           ctx.beginPath()
-          ctx.arc(px, py, star.r, 0, Math.PI * 2)
+          ctx.arc(px, py, Math.max(star.r, 0.75 / dpr), 0, Math.PI * 2)
           ctx.fill()
         }
       }
@@ -498,6 +515,7 @@ export function ShootingStars({
 
     const tick = (time: number) => {
       if (!running) return
+      if ((window.devicePixelRatio || 1) !== watchedDpr) onDprChange()
       if (lastTime === 0) lastTime = time
       const elapsed = Math.min(time - lastTime, 50)
       clock += elapsed
@@ -589,6 +607,22 @@ export function ShootingStars({
       spawnMeteor(x, y, Math.random() < 0.25)
     }
 
+    // DPR changes (window moved to another monitor, browser zoom) don't change
+    // CSS size, so ResizeObserver misses them: watch the resolution query.
+    // The animation loop also compares devicePixelRatio as a cheap fallback.
+    let dprQuery: MediaQueryList | null = null
+    const onDprChange = () => {
+      resize()
+      watchDpr()
+    }
+    const watchDpr = () => {
+      dprQuery?.removeEventListener('change', onDprChange)
+      watchedDpr = window.devicePixelRatio || 1
+      dprQuery = window.matchMedia(`(resolution: ${watchedDpr}dppx)`)
+      dprQuery.addEventListener('change', onDprChange)
+    }
+    watchDpr()
+
     const resizeObserver = new ResizeObserver(() => resize())
     resizeObserver.observe(container)
     window.addEventListener('orientationchange', resize)
@@ -609,6 +643,7 @@ export function ShootingStars({
       stop()
       cancelAnimationFrame(fadeRaf)
       resizeObserver.disconnect()
+      dprQuery?.removeEventListener('change', onDprChange)
       window.removeEventListener('orientationchange', resize)
       document.removeEventListener('visibilitychange', onVisibility)
       reducedQuery.removeEventListener('change', onReducedChange)
