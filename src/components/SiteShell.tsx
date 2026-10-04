@@ -23,7 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-canvas text-text-primary">
+    <div className="min-h-screen bg-canvas text-text-primary [html[data-theme=dark]_&]:bg-transparent">
       <header className="sticky top-0 z-50 border-b border-border bg-canvas/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link to="/" className="text-[15px] font-semibold tracking-tight text-text-primary">
@@ -76,7 +76,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         ) : null}
       </header>
       {children}
-      <footer className="border-t border-border bg-canvas">
+      <footer className="border-t border-border bg-canvas [html[data-theme=dark]_&]:bg-transparent">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.35fr)]">
             <div className="flex min-h-64 flex-col border-b border-dotted border-border py-10 lg:min-h-80 lg:border-r lg:border-b-0 lg:py-12 lg:pr-12">

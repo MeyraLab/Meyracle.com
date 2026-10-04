@@ -6,12 +6,14 @@ import { Home } from './pages/Home'
 import { About, NotFound, Privacy, Terms } from './pages/AboutLegal'
 import { ProductsIndex, VenturePage } from './pages/Ventures'
 import { Pricing } from './pages/Pricing'
+import { ShootingStarsBackground } from './components/ShootingStars'
 import { applyTheme, getInitialTheme } from './theme'
 
 applyTheme(getInitialTheme())
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ShootingStarsBackground />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
