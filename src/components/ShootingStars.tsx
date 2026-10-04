@@ -38,6 +38,8 @@ export interface ShootingStarsProps {
   nebula?: boolean
   clickToSpawn?: boolean
   parallax?: boolean
+  /** Tint of fireball end-flash and warm embers. */
+  flashColor?: string
   /** Render as a fixed, full-viewport layer behind the page. */
   fixed?: boolean
   className?: string
@@ -47,6 +49,8 @@ export interface ShootingStarsProps {
 const DEFAULT_STAR_COLORS = ['#FFFFFF', '#E0F2FE', '#C7D2FE', '#FEF08A'] as const
 const DEFAULT_SPEED: [number, number] = [12, 22]
 const DEFAULT_TRAIL_LENGTH: [number, number] = [90, 180]
+// Site palette: neutral black sky, white/gray stars and meteors (no blue tint).
+const SITE_STAR_COLORS = ['#FFFFFF', '#F5F5F5', '#E5E5E5', '#D4D4D4'] as const
 const REFERENCE_AREA = 1440 * 900
 const MAX_DPR = 2
 const PARALLAX_PX = 14
@@ -210,6 +214,7 @@ export function ShootingStars({
   nebula = true,
   clickToSpawn = true,
   parallax = true,
+  flashColor = '#FDE68A',
   fixed = false,
   className,
 }: ShootingStarsProps) {
@@ -240,7 +245,7 @@ export function ShootingStars({
     const radiantSprites = palette.map((rgb) => makeRadiantSprite(rgb))
     const trailRgb = parseColor(trailColor)
     const headRgb = parseColor(headColor)
-    const emberWarm: RGB = [253, 230, 138]
+    const emberWarm = parseColor(flashColor)
     const headSprite = makeGlowSprite(trailRgb, 96)
     const flashSprite = makeGlowSprite(emberWarm, 128)
 
@@ -630,6 +635,7 @@ export function ShootingStars({
     showEmbers,
     clickToSpawn,
     parallax,
+    flashColor,
   ])
 
   const layerStyle: CSSProperties = {
@@ -684,5 +690,15 @@ function useIsDarkTheme() {
 export function ShootingStarsBackground() {
   const dark = useIsDarkTheme()
   if (!dark) return null
-  return <ShootingStars fixed />
+  return (
+    <ShootingStars
+      fixed
+      background="var(--color-canvas)"
+      starColors={SITE_STAR_COLORS}
+      trailColor="#E5E5E5"
+      headColor="#FFFFFF"
+      flashColor="#FFFFFF"
+      nebula={false}
+    />
+  )
 }
