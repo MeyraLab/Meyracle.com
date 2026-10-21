@@ -4,7 +4,8 @@ import { ProductDemo } from '../components/product-demo/ProductDemo'
 import { SiteShell } from '../components/SiteShell'
 import { getHomeGroups, type HomeCard } from '../data/catalog'
 import { getHomeProductDemo } from '../data/productDemos'
-import { studio } from '../data/studio'
+import { useOfferings, useStudio } from '../data/localized'
+import { useI18n } from '../i18n'
 import { cn } from '../lib/cn'
 import './Home.css'
 
@@ -29,11 +30,12 @@ function HomeCardEntry({ item }: { item: HomeCard }) {
 }
 
 function HomeProductCardCompactFooter({ label }: { label: string }) {
+  const { t } = useI18n()
   return (
     <div className="home-product-card__footer home-product-card__footer--compact">
       <span className="home-product-card__label">{label}</span>
       <span className="home-product-card__explore">
-        探索
+        {t.home.explore}
         <ArrowRight className="home-product-card__explore-icon" strokeWidth={1.75} aria-hidden="true" />
       </span>
     </div>
@@ -41,7 +43,8 @@ function HomeProductCardCompactFooter({ label }: { label: string }) {
 }
 
 function HomeProductCard({ item }: { item: HomeCard }) {
-  const demo = getHomeProductDemo(item.id)
+  const { t } = useI18n()
+  const demo = getHomeProductDemo(item.id, t)
 
   if (demo) {
     const linkClassName = cn(
@@ -63,12 +66,12 @@ function HomeProductCard({ item }: { item: HomeCard }) {
             target="_blank"
             rel="noopener noreferrer"
             className={linkClassName}
-            aria-label={`探索 ${item.name}`}
+            aria-label={t.home.exploreName(item.name)}
           >
             {body}
           </a>
         ) : (
-          <Link to={item.href} className={linkClassName} aria-label={`探索 ${item.name}`}>
+          <Link to={item.href} className={linkClassName} aria-label={t.home.exploreName(item.name)}>
             {body}
           </Link>
         )}
@@ -92,7 +95,9 @@ function HomeProductCard({ item }: { item: HomeCard }) {
 }
 
 export function Home() {
-  const groups = getHomeGroups()
+  const { t } = useI18n()
+  const studio = useStudio()
+  const groups = getHomeGroups(useOfferings(), t)
 
   return (
     <SiteShell>

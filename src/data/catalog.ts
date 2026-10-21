@@ -1,10 +1,5 @@
-import { offerings, type Offering, type OfferingKind } from './studio'
-
-export const HOME_GROUP_LABELS: Record<OfferingKind, string> = {
-  app: '当前产品',
-  download: '商品',
-  service: '服务',
-}
+import type { Dictionary } from '../i18n'
+import type { Offering, OfferingKind } from './studio'
 
 export interface HomeCard {
   id: string
@@ -45,15 +40,16 @@ function offeringToCard(offering: Offering): HomeCard {
   }
 }
 
-function liveOfKind(kind: OfferingKind): HomeCard[] {
+function liveOfKind(offerings: Offering[], kind: OfferingKind): HomeCard[] {
   return offerings.filter((item) => item.kind === kind && isListed(item.status)).map(offeringToCard)
 }
 
-export function getHomeGroups(): HomeGroup[] {
+export function getHomeGroups(offerings: Offering[], t: Dictionary): HomeGroup[] {
+  const labels = t.home.groups
   const groups: HomeGroup[] = [
-    { id: 'app', label: HOME_GROUP_LABELS.app, items: liveOfKind('app') },
-    { id: 'download', label: HOME_GROUP_LABELS.download, items: liveOfKind('download') },
-    { id: 'service', label: HOME_GROUP_LABELS.service, items: liveOfKind('service') },
+    { id: 'app', label: labels.app, items: liveOfKind(offerings, 'app') },
+    { id: 'download', label: labels.download, items: liveOfKind(offerings, 'download') },
+    { id: 'service', label: labels.service, items: liveOfKind(offerings, 'service') },
   ]
 
   return groups.filter((group) => group.items.length > 0)

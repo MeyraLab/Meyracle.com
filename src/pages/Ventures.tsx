@@ -1,17 +1,20 @@
 import { Link, useParams } from 'react-router-dom'
 import { SiteShell } from '../components/SiteShell'
-import { offerings } from '../data/studio'
+import { useOfferings } from '../data/localized'
+import { useI18n } from '../i18n'
 
 export function ProductsIndex() {
+  const { t } = useI18n()
+  const offerings = useOfferings()
   return (
     <SiteShell>
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">产品</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">{t.products.eyebrow}</p>
         <h1 className="mt-4 max-w-2xl text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-          产品目录
+          {t.products.title}
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-          Inkpai 用于公众号文章排版；图片书摘用于文字成图。
+          {t.products.intro}
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {offerings.map((item) => (
@@ -36,15 +39,17 @@ export function ProductsIndex() {
 
 export function VenturePage() {
   const { slug } = useParams<{ slug: string }>()
+  const { t } = useI18n()
+  const offerings = useOfferings()
   const item = offerings.find((o) => o.slug === slug)
 
   if (!item) {
     return (
       <SiteShell>
         <main className="mx-auto max-w-3xl px-4 py-24 text-center">
-          <p className="text-text-secondary">未找到该产品</p>
+          <p className="text-text-secondary">{t.products.notFound}</p>
           <Link to="/products" className="mt-4 inline-block text-sm hover:underline">
-            查看产品目录
+            {t.products.viewCatalog}
           </Link>
         </main>
       </SiteShell>
@@ -77,7 +82,7 @@ export function VenturePage() {
               to={item.pricingPath}
               className="inline-flex h-12 items-center rounded-full border border-border px-6 text-sm text-text-primary transition-colors hover:border-border-strong"
             >
-              查看价格与权益
+              {t.products.viewPricing}
             </Link>
           ) : null}
           {item.repoUrl ? (
@@ -87,7 +92,7 @@ export function VenturePage() {
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center px-2 text-sm text-text-secondary hover:text-text-primary"
             >
-              查看源码 →
+              {t.products.viewSource}
             </a>
           ) : null}
         </div>

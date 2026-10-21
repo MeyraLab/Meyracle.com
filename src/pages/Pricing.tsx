@@ -1,56 +1,27 @@
 import { Link } from 'react-router-dom'
 import { SiteShell } from '../components/SiteShell'
 import { studio } from '../data/studio'
+import { useI18n } from '../i18n'
 
-const plans = [
-  {
-    name: 'Inkpai 基础版',
-    price: '免费',
-    billing: '无需付款',
-    description: '完成公众号文章排版所需的基础功能。',
-    features: [
-      '完整基础排版工具',
-      '8 套基础主题',
-      '图片、表格与手机预览',
-      '一键复制到公众号',
-      '本地草稿自动保存',
-    ],
-    action: '使用基础版',
-    href: 'https://inkpai.meyracle.com',
-    featured: false,
-  },
-  {
-    name: 'Inkpai Plus',
-    price: '¥128',
-    period: '/年',
-    priceTag: '限时',
-    originalPrice: '¥198',
-    billing: '一次性购买 12 个月使用权，不自动续费。到期后如需继续使用，请重新购买。',
-    description: '供需要更多版式与导出能力的创作者使用。',
-    features: [
-      '包含基础版全部功能',
-      'AI 辅助文章排版',
-      'Plus 高级排版样式与组件',
-      '图片与素材排版工具',
-      '订阅期内持续更新的会员功能',
-    ],
-    action: '微信支付购买一年',
-    href: 'https://inkpai.meyracle.com/pricing',
-    featured: true,
-  },
+const planLinks = [
+  { href: 'https://inkpai.meyracle.com', featured: false, originalPrice: undefined },
+  { href: 'https://inkpai.meyracle.com/pricing', featured: true, originalPrice: '¥198' },
 ]
 
 export function Pricing() {
+  const { t } = useI18n()
+  const p = t.pricing
+  const plans = p.plans.map((plan, index) => ({ ...plan, ...planLinks[index] }))
   return (
     <SiteShell>
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <header className="max-w-2xl">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">定价</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">{p.eyebrow}</p>
           <h1 className="mt-4 text-4xl font-medium tracking-[-0.04em] text-text-primary sm:text-5xl">
-            产品价格与权益
+            {p.title}
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Inkpai 提供免费基础版，以及一次性购买 12 个月使用权的 Plus。图片书摘免费使用。
+            {p.intro}
           </p>
         </header>
 
@@ -58,7 +29,7 @@ export function Pricing() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
-                微信公众号排版工具
+                {p.inkpaiKicker}
               </p>
               <h2 id="inkpai-pricing" className="mt-3 text-2xl font-medium tracking-[-0.03em] text-text-primary">
                 Inkpai
@@ -70,11 +41,11 @@ export function Pricing() {
               rel="noopener noreferrer"
               className="text-sm text-text-secondary transition-colors hover:text-text-primary"
             >
-              打开 Inkpai →
+              {p.openInkpai}
             </a>
           </div>
 
-          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
             {plans.map((plan) => (
               <article key={plan.name} className="flex h-full flex-col rounded-[28px] bg-surface p-6 sm:p-8">
                 <h3 className="text-xl font-medium tracking-tight text-text-primary">{plan.name}</h3>
@@ -90,7 +61,7 @@ export function Pricing() {
                       {plan.priceTag ? <span>{plan.priceTag}</span> : null}
                       {plan.originalPrice ? (
                         <span>
-                          原价 <s>{plan.originalPrice}</s>
+                          {p.originalPrice} <s>{plan.originalPrice}</s>
                         </span>
                       ) : null}
                     </p>
@@ -125,23 +96,23 @@ export function Pricing() {
           </div>
 
           <div className="mt-4 rounded-[24px] border border-border p-6 sm:p-7">
-            <h3 className="text-base font-medium text-text-primary">购买与生效</h3>
+            <h3 className="text-base font-medium text-text-primary">{p.purchaseTitle}</h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              点击“微信支付购买一年”后，登录或注册 Inkpai 账号并进入 Waffo 收银台，使用微信支付完成付款。¥128/年为限时价（原价 ¥198），12 个月使用权与当前账号绑定。一次性购买，不自动续费；到期后如需继续使用，请重新购买。
+              {p.purchaseBody}
             </p>
           </div>
         </section>
 
         <section aria-labelledby="imageexcerpt-pricing" className="mt-16 border-t border-border pt-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">文字成图工具</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">{p.excerptKicker}</p>
           <h2 id="imageexcerpt-pricing" className="mt-3 text-2xl font-medium tracking-[-0.03em] text-text-primary">
-            图片书摘
+            {t.offerings.imageexcerpt.name}
           </h2>
           <div className="mt-6 rounded-[24px] bg-surface p-6 sm:p-8">
-            <p className="text-3xl font-medium tracking-[-0.04em] text-text-primary">免费</p>
-            <p className="mt-3 text-sm font-medium text-text-primary">无需付款，没有订阅</p>
+            <p className="text-3xl font-medium tracking-[-0.04em] text-text-primary">{p.free}</p>
+            <p className="mt-3 text-sm font-medium text-text-primary">{p.noPayment}</p>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
-              输入文字，选择样式并保存图片。当前全部功能免费使用。
+              {p.excerptBody}
             </p>
             <a
               href="https://bk.meyracle.com"
@@ -149,25 +120,25 @@ export function Pricing() {
               rel="noopener noreferrer"
               className="mt-6 inline-flex h-12 items-center rounded-full bg-cta px-6 text-sm font-medium text-cta-text transition-opacity hover:opacity-80"
             >
-              打开图片书摘
+              {p.openExcerpt}
             </a>
           </div>
         </section>
 
         <section className="mt-16 border-t border-border pt-10 text-sm leading-relaxed text-text-secondary">
           <p>
-            价格以人民币结算，使用微信支付。结账前展示应付金额与税费。
+            {p.currencyNote}
           </p>
           <p className="mt-3">
-            需要协助，请联系{' '}
+            {p.helpBefore}{' '}
             <a href={`mailto:${studio.email}`} className="text-text-primary underline underline-offset-4">
               {studio.email}
             </a>
-            。购买前请阅读{' '}
+            {p.helpMiddle}{' '}
             <Link to="/terms" className="text-text-primary underline underline-offset-4">
-              服务条款
+              {p.termsLink}
             </Link>
-            。
+            {p.helpAfter}
           </p>
         </section>
       </main>
