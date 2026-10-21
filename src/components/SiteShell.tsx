@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { studio } from '../data/studio'
-import { useOfferings } from '../data/localized'
+import { useOfferings, useStudio } from '../data/localized'
 import { useI18n } from '../i18n'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { applyTheme, saveTheme, type Theme } from '../theme'
@@ -10,6 +10,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   const { t } = useI18n()
   const offerings = useOfferings()
+  const localStudio = useStudio()
   const nav = [
     { to: '/products', label: t.nav.products },
     { to: '/pricing', label: t.nav.pricing },
@@ -83,21 +84,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
         ) : null}
       </header>
       {children}
-      <footer className="border-t border-border bg-canvas [html[data-theme=dark]_&]:bg-transparent">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.35fr)]">
-            <div className="flex min-h-64 flex-col border-b border-dotted border-border py-10 lg:min-h-80 lg:border-r lg:border-b-0 lg:py-12 lg:pr-12">
+      <footer className="bg-canvas [html[data-theme=dark]_&]:bg-transparent">
+        <div className="mx-auto max-w-6xl px-4 pt-16 pb-12 sm:px-6 lg:pt-24">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.35fr)] lg:gap-16">
+            <div className="flex flex-col lg:min-h-64">
               <div>
-                <Link to="/" className="text-sm font-semibold tracking-tight text-text-primary">
+                <Link to="/" className="font-serif text-xl font-light tracking-tight text-text-primary">
                   {studio.name}
                 </Link>
-                <p className="mt-2 text-[11px] text-text-secondary">{t.nav.footerTagline}</p>
-                <p className="mt-2 text-[11px] text-text-muted">
-                  © {new Date().getFullYear()} {studio.legalName}
-                </p>
+                <p className="mt-3 max-w-[18rem] text-[11px] text-text-secondary">{localStudio.tagline}</p>
+                <p className="mt-2 text-[11px] text-text-muted">© {new Date().getFullYear()}</p>
               </div>
 
-              <div className="mt-auto flex items-center gap-3 pt-16">
+              <div className="mt-auto flex items-center gap-3 pt-12 lg:pt-16">
                 <button
                   type="button"
                   onClick={toggleTheme}
@@ -136,11 +135,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
             <nav
               aria-label={t.nav.footerNav}
-              className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:py-12 lg:pl-16"
+              className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3"
             >
-              <div>
-                <p className="text-[11px] font-medium text-text-primary">{t.nav.products}</p>
-                <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
+              <div className="min-w-0">
+                <p className="font-serif text-sm font-light text-text-primary">{t.nav.products}</p>
+                <ul className="mt-4 space-y-2.5 text-[11px] text-text-secondary">
                   {offerings.map((item) => (
                     <li key={item.id}>
                       <Link to={`/products/${item.slug}`} className="transition-colors hover:text-text-primary">
@@ -151,19 +150,25 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 </ul>
               </div>
 
-              <div>
-                <p className="text-[11px] font-medium text-text-primary">Meyracle</p>
-                <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
+              <div className="min-w-0">
+                <p className="font-serif text-sm font-light text-text-primary">{t.nav.contact}</p>
+                <ul className="mt-4 space-y-2.5 text-[11px] text-text-secondary">
                   <li>
-                    <Link to="/" className="transition-colors hover:text-text-primary">
-                      {t.nav.home}
-                    </Link>
+                    <a href={`mailto:${studio.email}`} className="transition-colors hover:text-text-primary">
+                      {t.nav.support}
+                    </a>
                   </li>
                   <li>
-                    <Link to="/products" className="transition-colors hover:text-text-primary">
-                      {t.nav.products}
-                    </Link>
+                    <a href={`mailto:${studio.hello}`} className="transition-colors hover:text-text-primary">
+                      {t.nav.partnership}
+                    </a>
                   </li>
+                </ul>
+              </div>
+
+              <div className="min-w-0">
+                <p className="font-serif text-sm font-light text-text-primary">{t.nav.other}</p>
+                <ul className="mt-4 space-y-2.5 text-[11px] text-text-secondary">
                   <li>
                     <Link to="/pricing" className="transition-colors hover:text-text-primary">
                       {t.nav.pricing}
@@ -175,17 +180,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                     </Link>
                   </li>
                   <li>
-                    <a href={`mailto:${studio.email}`} className="transition-colors hover:text-text-primary">
-                      {t.nav.contact}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <p className="text-[11px] font-medium text-text-primary">{t.nav.legal}</p>
-                <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
-                  <li>
                     <Link to="/privacy" className="transition-colors hover:text-text-primary">
                       {t.nav.privacy}
                     </Link>
@@ -194,12 +188,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                     <Link to="/terms" className="transition-colors hover:text-text-primary">
                       {t.nav.terms}
                     </Link>
-                  </li>
-                  <li>
-                    <span className="font-mono">{studio.domain}</span>
-                  </li>
-                  <li>
-                    {t.nav.wechat} <span className="font-mono">{studio.wechat}</span>
                   </li>
                 </ul>
               </div>
