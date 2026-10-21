@@ -34,7 +34,6 @@ export interface Dictionary {
     legal: string
     privacy: string
     terms: string
-    wechat: string
     openMenu: string
     closeMenu: string
     footerNav: string

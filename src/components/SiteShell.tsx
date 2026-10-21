@@ -163,9 +163,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
                       {t.nav.partnership}
                     </a>
                   </li>
-                  <li>
-                    {t.nav.wechat} <span className="font-mono">{studio.wechat}</span>
-                  </li>
                 </ul>
               </div>
 

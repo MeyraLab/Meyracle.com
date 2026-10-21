@@ -35,7 +35,6 @@ export const zh: Dictionary = {
     legal: '法律',
     privacy: '隐私',
     terms: '条款',
-    wechat: '微信',
     openMenu: '打开菜单',
     closeMenu: '关闭菜单',
     footerNav: '页尾导航',
