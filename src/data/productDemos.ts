@@ -1,5 +1,6 @@
 import { imageexcerptFolder } from '../components/product-demo/scripts/imageexcerptFolder'
 import { inkpaiCanvas } from '../components/product-demo/scripts/inkpaiCanvas'
+import type { Dictionary } from '../i18n'
 import type { DemoMacWindow, ProductDemoScript } from '../components/product-demo/types'
 
 export interface HomeProductDemo {
@@ -8,21 +9,18 @@ export interface HomeProductDemo {
   macWindow?: DemoMacWindow
 }
 
-const HOME_PRODUCT_DEMOS: Record<string, HomeProductDemo> = {
+const homeProductDemos = (t: Dictionary): Record<string, HomeProductDemo> => ({
   inkpai: {
     script: inkpaiCanvas,
-    footerLabel: '写作',
-    macWindow: {
-      title: 'inkpai / 排版',
-      status: '预览',
-    },
+    footerLabel: t.home.demoFooter.inkpai,
+    macWindow: t.home.inkpaiWindow,
   },
   imageexcerpt: {
     script: imageexcerptFolder,
-    footerLabel: '书摘',
+    footerLabel: t.home.demoFooter.imageexcerpt,
   },
-}
+})
 
-export function getHomeProductDemo(productId: string): HomeProductDemo | undefined {
-  return HOME_PRODUCT_DEMOS[productId]
+export function getHomeProductDemo(productId: string, t: Dictionary): HomeProductDemo | undefined {
+  return homeProductDemos(t)[productId]
 }
