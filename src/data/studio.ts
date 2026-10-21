@@ -11,6 +11,9 @@ export interface Studio {
   description: string
   wechat: string
   email: string
+  hello: string
+  /** Registered with Waffo (payments); shown on the pricing page. */
+  billingEmail: string
 }
 
 export interface Offering {
@@ -38,7 +41,9 @@ export const studio: Studio = {
   tagline: '独立开发的数字产品',
   description: '由 MEYRA 开发，目前包括 Inkpai 与图片书摘。',
   wechat: 'MEYRA1219',
-  email: 'meyrasupport@gmail.com',
+  email: 'support@meyracle.com',
+  hello: 'hello@meyracle.com',
+  billingEmail: 'meyrasupport@gmail.com',
 }
 
 export const offerings: Offering[] = [
