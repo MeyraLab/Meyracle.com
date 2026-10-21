@@ -38,7 +38,9 @@ export interface Dictionary {
     openMenu: string
     closeMenu: string
     footerNav: string
-    footerTagline: string
+    other: string
+    support: string
+    partnership: string
     toDark: string
     toLight: string
     dark: string
