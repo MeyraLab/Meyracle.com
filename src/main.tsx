@@ -8,12 +8,15 @@ import { ProductsIndex, VenturePage } from './pages/Ventures'
 import { Pricing } from './pages/Pricing'
 import { ShootingStarsBackground } from './components/ShootingStars'
 import { applyTheme, getInitialTheme } from './theme'
+import { I18nProvider, applyLang, getInitialLang } from './i18n'
 
 applyTheme(getInitialTheme())
+applyLang(getInitialLang())
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ShootingStarsBackground />
+    <I18nProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,6 +34,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </I18nProvider>
   </StrictMode>,
 )
 

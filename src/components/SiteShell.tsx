@@ -1,16 +1,20 @@
 import { useState, type ReactNode } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { offerings, studio } from '../data/studio'
+import { studio } from '../data/studio'
+import { useOfferings } from '../data/localized'
+import { useI18n } from '../i18n'
+import { LanguageSwitcher } from './LanguageSwitcher'
 import { applyTheme, saveTheme, type Theme } from '../theme'
-
-const nav = [
-  { to: '/products', label: '产品' },
-  { to: '/pricing', label: '定价' },
-  { to: '/about', label: '关于' },
-]
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
+  const { t } = useI18n()
+  const offerings = useOfferings()
+  const nav = [
+    { to: '/products', label: t.nav.products },
+    { to: '/pricing', label: t.nav.pricing },
+    { to: '/about', label: t.nav.about },
+  ]
   const [theme, setTheme] = useState<Theme>(() =>
     document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
   )
@@ -29,6 +33,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <Link to="/" className="text-[15px] font-semibold tracking-tight text-text-primary">
             {studio.name}
           </Link>
+          <div className="flex items-center gap-3 md:gap-6">
           <nav className="hidden items-center gap-8 text-[13px] text-text-secondary md:flex">
             {nav.map((item) => (
               <NavLink
@@ -42,19 +47,21 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </NavLink>
             ))}
           </nav>
+          <LanguageSwitcher />
           <button
             type="button"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-primary md:hidden"
             aria-expanded={open}
-            aria-label={open ? '关闭菜单' : '打开菜单'}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             onClick={() => setOpen((value) => !value)}
           >
-            <span className="sr-only">{open ? '关闭菜单' : '打开菜单'}</span>
+            <span className="sr-only">{open ? t.nav.closeMenu : t.nav.openMenu}</span>
             <span className="flex flex-col items-center justify-center gap-[5px]">
               <span className={`block h-[1.5px] w-[18px] bg-text-primary transition ${open ? 'translate-y-[3.25px] rotate-45' : ''}`} />
               <span className={`block h-[1.5px] w-[18px] bg-text-primary transition ${open ? '-translate-y-[3.25px] -rotate-45' : ''}`} />
             </span>
           </button>
+          </div>
         </div>
         {open ? (
           <div className="border-t border-border px-4 py-4 md:hidden">
@@ -84,7 +91,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <Link to="/" className="text-sm font-semibold tracking-tight text-text-primary">
                   {studio.name}
                 </Link>
-                <p className="mt-2 text-[11px] text-text-secondary">MEYRA 做的产品。</p>
+                <p className="mt-2 text-[11px] text-text-secondary">{t.nav.footerTagline}</p>
                 <p className="mt-2 text-[11px] text-text-muted">
                   © {new Date().getFullYear()} {studio.legalName}
                 </p>
@@ -95,9 +102,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   type="button"
                   onClick={toggleTheme}
                   className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-text-muted transition-colors hover:border-border-strong hover:text-text-primary"
-                  aria-label={theme === 'light' ? '切换到暗色主题' : '切换到浅色主题'}
+                  aria-label={theme === 'light' ? t.nav.toDark : t.nav.toLight}
                   aria-pressed={theme === 'dark'}
-                  title={theme === 'light' ? '切换到暗色主题' : '切换到浅色主题'}
+                  title={theme === 'light' ? t.nav.toDark : t.nav.toLight}
                 >
                   {theme === 'light' ? (
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -122,17 +129,17 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   )}
                 </button>
                 <span className="text-[11px] text-text-muted">
-                  {theme === 'light' ? '暗色' : '浅色'}
+                  {theme === 'light' ? t.nav.dark : t.nav.light}
                 </span>
               </div>
             </div>
 
             <nav
-              aria-label="页尾导航"
+              aria-label={t.nav.footerNav}
               className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:py-12 lg:pl-16"
             >
               <div>
-                <p className="text-[11px] font-medium text-text-primary">产品</p>
+                <p className="text-[11px] font-medium text-text-primary">{t.nav.products}</p>
                 <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
                   {offerings.map((item) => (
                     <li key={item.id}>
@@ -149,50 +156,50 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
                   <li>
                     <Link to="/" className="transition-colors hover:text-text-primary">
-                      首页
+                      {t.nav.home}
                     </Link>
                   </li>
                   <li>
                     <Link to="/products" className="transition-colors hover:text-text-primary">
-                      产品
+                      {t.nav.products}
                     </Link>
                   </li>
                   <li>
                     <Link to="/pricing" className="transition-colors hover:text-text-primary">
-                      定价
+                      {t.nav.pricing}
                     </Link>
                   </li>
                   <li>
                     <Link to="/about" className="transition-colors hover:text-text-primary">
-                      关于
+                      {t.nav.about}
                     </Link>
                   </li>
                   <li>
                     <a href={`mailto:${studio.email}`} className="transition-colors hover:text-text-primary">
-                      联系
+                      {t.nav.contact}
                     </a>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <p className="text-[11px] font-medium text-text-primary">法律</p>
+                <p className="text-[11px] font-medium text-text-primary">{t.nav.legal}</p>
                 <ul className="mt-4 space-y-2 text-[11px] text-text-secondary">
                   <li>
                     <Link to="/privacy" className="transition-colors hover:text-text-primary">
-                      隐私
+                      {t.nav.privacy}
                     </Link>
                   </li>
                   <li>
                     <Link to="/terms" className="transition-colors hover:text-text-primary">
-                      条款
+                      {t.nav.terms}
                     </Link>
                   </li>
                   <li>
                     <span className="font-mono">{studio.domain}</span>
                   </li>
                   <li>
-                    微信 <span className="font-mono">{studio.wechat}</span>
+                    {t.nav.wechat} <span className="font-mono">{studio.wechat}</span>
                   </li>
                 </ul>
               </div>
