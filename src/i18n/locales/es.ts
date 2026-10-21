@@ -35,7 +35,6 @@ export const es: Dictionary = {
     legal: 'Legal',
     privacy: 'Privacidad',
     terms: 'Términos',
-    wechat: 'WeChat',
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
     footerNav: 'Pie de página',

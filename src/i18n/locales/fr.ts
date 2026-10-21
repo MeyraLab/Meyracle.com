@@ -35,7 +35,6 @@ export const fr: Dictionary = {
     legal: 'Mentions légales',
     privacy: 'Confidentialité',
     terms: 'Conditions',
-    wechat: 'WeChat',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     footerNav: 'Pied de page',

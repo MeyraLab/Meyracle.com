@@ -35,7 +35,6 @@ export const ja: Dictionary = {
     legal: '規約',
     privacy: 'プライバシー',
     terms: '利用規約',
-    wechat: 'WeChat',
     openMenu: 'メニューを開く',
     closeMenu: 'メニューを閉じる',
     footerNav: 'フッターナビゲーション',

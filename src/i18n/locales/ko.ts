@@ -35,7 +35,6 @@ export const ko: Dictionary = {
     legal: '법적 고지',
     privacy: '개인정보',
     terms: '약관',
-    wechat: '위챗',
     openMenu: '메뉴 열기',
     closeMenu: '메뉴 닫기',
     footerNav: '하단 메뉴',
