@@ -131,8 +131,8 @@ export function Pricing() {
           </p>
           <p className="mt-3">
             {p.helpBefore}{' '}
-            <a href={`mailto:${studio.email}`} className="text-text-primary underline underline-offset-4">
-              {studio.email}
+            <a href={`mailto:${studio.billingEmail}`} className="text-text-primary underline underline-offset-4">
+              {studio.billingEmail}
             </a>
             {p.helpMiddle}{' '}
             <Link to="/terms" className="text-text-primary underline underline-offset-4">

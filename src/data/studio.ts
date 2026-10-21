@@ -12,6 +12,8 @@ export interface Studio {
   wechat: string
   email: string
   hello: string
+  /** Registered with Waffo (payments); shown on the pricing page. */
+  billingEmail: string
 }
 
 export interface Offering {
@@ -41,6 +43,7 @@ export const studio: Studio = {
   wechat: 'MEYRA1219',
   email: 'support@meyracle.com',
   hello: 'hello@meyracle.com',
+  billingEmail: 'meyrasupport@gmail.com',
 }
 
 export const offerings: Offering[] = [
